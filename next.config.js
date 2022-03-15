@@ -1,11 +1,30 @@
+// module.exports = {
+//   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+//     return {
+//       test: /hammerjs/,
+//       loader: "bundle-loader",
+//       options: {
+//         lazy: true,
+//       },
+//     };
+//   },
+// };
+
 module.exports = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    return {
+  webpack: (config, options) => {
+    config.module.rules.push({
       test: /hammerjs/,
-      loader: "bundle-loader",
-      options: {
-        lazy: true,
-      },
-    };
+      use: [
+        options.defaultLoaders.babel,
+        {
+          loader: "bundle-loader",
+          options: {
+            lazy: true,
+          },
+        },
+      ],
+    });
+
+    return config;
   },
 };
