@@ -1,7 +1,7 @@
 export const products = [
   // {
   //   id: 1,
-  //   src: "/images/5/backg2.jpg",
+  //   src: "/images/webp/backg2.webp",
   //   grid: 5,
   //   x: -500,
   //   y: -500,
@@ -11,7 +11,7 @@ export const products = [
   // },
   {
     id: 2,
-    src: "/images/5/merz.png",
+    src: "/images/webp/merz.webp",
     grid: 5,
     x: 700,
     y: 1050,
@@ -21,7 +21,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/verboten.png",
+    src: "/images/webp/verboten.webp",
     grid: 5,
     x: -200,
     y: 300,
@@ -31,7 +31,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/tv.png",
+    src: "/images/webp/tv.webp",
     grid: 5,
     x: 750,
     y: 600,
@@ -41,7 +41,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/tz.png",
+    src: "/images/webp/tz.webp",
     grid: 5,
     x: 800,
     y: 700,
@@ -51,7 +51,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/redwhite.png",
+    src: "/images/webp/redwhite.webp",
     grid: 5,
     x: 500,
     y: 100,
@@ -61,7 +61,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/flake1.png",
+    src: "/images/webp/flake1.webp",
     grid: 5,
     x: 0,
     y: 100,
@@ -71,7 +71,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/reduziert.png",
+    src: "/images/webp/reduziert.webp",
     grid: 5,
     x: 1050,
     y: 100,
@@ -81,7 +81,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/solar.png",
+    src: "/images/webp/solar.webp",
     grid: 5,
     x: 900,
     y: 100,
@@ -92,7 +92,7 @@ export const products = [
 
   {
     id: 1,
-    src: "/images/5/cba.png",
+    src: "/images/webp/cba.webp",
     grid: 5,
     x: 400,
     y: 950,
@@ -102,7 +102,17 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/affitasi2.png",
+    src: "/images/webp/cba.webp",
+    grid: 5,
+    x: 561,
+    y: 950,
+    parallex: 2.2,
+    width: 161,
+    height: 231,
+  },
+  {
+    id: 1,
+    src: "/images/webp/affitasi2.webp",
     grid: 5,
     x: 1450,
     y: 500,
@@ -112,7 +122,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/flake2.png",
+    src: "/images/webp/flake2.webp",
     grid: 5,
     x: 300,
     y: 500,
@@ -122,7 +132,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/plank.png",
+    src: "/images/webp/plank.webp",
     grid: 5,
     x: -100,
     y: 50,
@@ -132,7 +142,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/wax.png",
+    src: "/images/webp/wax.webp",
     grid: 5,
     x: 300,
     y: 300,
@@ -142,7 +152,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/greengraf.png",
+    src: "/images/webp/greengraf.webp",
     grid: 5,
     x: -100,
     y: -400,
@@ -152,7 +162,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/samstag.png",
+    src: "/images/webp/samstag.webp",
     grid: 5,
     x: 1400,
     y: 890,
@@ -162,7 +172,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/affitasi1.png",
+    src: "/images/webp/affitasi1.webp",
     grid: 5,
     x: -150,
     y: 700,
@@ -172,7 +182,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/montag.png",
+    src: "/images/webp/montag.webp",
     grid: 5,
     x: -50,
     y: 870,
@@ -182,7 +192,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/yellowgraf.png",
+    src: "/images/webp/yellowgraf.webp",
     grid: 5,
     x: -320,
     y: 800,
@@ -193,7 +203,7 @@ export const products = [
 
   {
     id: 1,
-    src: "/images/5/purplegraff.png",
+    src: "/images/webp/purplegraff.webp",
     grid: 5,
     x: 920,
     y: 600,
@@ -203,7 +213,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/redgraff.png",
+    src: "/images/webp/redgraff.webp",
     grid: 5,
     x: 1120,
     y: 630,
@@ -213,7 +223,7 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/flake3.png",
+    src: "/images/webp/flake3.webp",
     grid: 5,
     x: 940,
     y: 620,
@@ -223,11 +233,11 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/placeholder.jpeg",
+    src: "/images/webp/placeholder.webp",
     imageCarousel: [
-      "/images/5/placeholder.jpeg",
-      "/images/5/flake3.png",
-      "/images/5/redgraff.png",
+      "/images/webp/placeholder.webp",
+      "/images/webp/flake3.webp",
+      "/images/webp/redgraff.webp",
     ],
     url: "/basic-tshirt",
     description:
@@ -253,11 +263,17 @@ export const products = [
   },
   {
     id: 1,
-    src: "/images/5/placeholder-boxers.jpeg",
+    src: "/images/webp/placeholder-boxers.webp",
+    parallex: 4,
+    width: 412,
+    height: 550,
+    grid: 5,
+    x: 1800,
+    y: 300,
     imageCarousel: [
-      "/images/5/placeholder.jpeg",
-      "/images/5/flake3.png",
-      "/images/5/redgraff.png",
+      "/images/webp/placeholder.webp",
+      "/images/webp/flake3.webp",
+      "/images/webp/redgraff.webp",
     ],
     url: "/basic-tshirt",
     description:
@@ -274,11 +290,5 @@ export const products = [
       gbp: 100,
       euro: 150,
     },
-    grid: 5,
-    x: 1800,
-    y: 300,
-    parallex: 4,
-    width: 412,
-    height: 550,
   },
 ];
