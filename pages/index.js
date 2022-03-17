@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Script from "next/script";
+import yn from "yn";
 
 import { onScroll } from "../utils/onScroll";
 import { products } from "../database/products";
@@ -63,14 +64,17 @@ export default function Home() {
   const handleMediaLoaded = (p5) => {
     mediaLoaded++;
     if (mediaLoaded === products.length) {
-      skipButton = p5.createButton("skip intro video");
+      skipButton = p5.createButton("skip video");
       skipButton.position(0, 0);
       skipButton.style("background-color", "#ff0000");
-      skipButton.mousePressed(() => (showIntroVideo = false));
+      skipButton.mousePressed(() => {
+        showIntroVideo = yn(localStorage.setItem("showIntroVideo", false));
+      });
     }
   };
 
   const setup = (p5, canvasParentRef) => {
+    showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
       .parent(canvasParentRef);
