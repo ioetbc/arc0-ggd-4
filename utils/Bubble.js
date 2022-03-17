@@ -4,17 +4,18 @@ let vx = 0;
 let vy = 0;
 
 export default class Bubble {
-  constructor(x, y, width, height, img, parallex, id, p5, url = false) {
+  constructor(x, y, width, height, img, parallex, id, p5, url = false, type) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
     this.brightness = 0;
-    this.kitten = img;
+    this.image = img;
     this.parallex = parallex;
     this.id = id;
     this.p5 = p5;
     this.url = url;
+    this.type = type;
   }
 
   move() {
@@ -27,11 +28,11 @@ export default class Bubble {
   }
 
   show() {
-    this.p5.image(this.kitten, this.x, this.y, this.width, this.height);
+    this.p5.image(this.image, this.x, this.y, this.width, this.height);
     this.x += vx;
     this.y += vy;
 
-    if (this.url) {
+    if (this.type === "product") {
       this.move();
     }
 
@@ -53,32 +54,22 @@ export default class Bubble {
     return distance < this.width + otherBubble.width;
   }
 
-  mouseOverProduct(mouseX, mouseY) {
+  mouseOver(mouseX, mouseY) {
     return (
       mouseX > this.x &&
       mouseX < this.x + this.width &&
       mouseY > this.y &&
-      mouseY < this.y + this.height &&
-      this.url
+      mouseY < this.y + this.height
     );
   }
 
   clicked(mouseX, mouseY) {
-    console.log({
-      mouseX,
-      mouseY,
-      x: this.x,
-      y: this.y,
-    });
-    if (
+    return (
       mouseX > this.x &&
       mouseX < this.x + this.width &&
       mouseY > this.y &&
-      mouseY < this.y + this.height &&
-      this.url
-    ) {
-      router.push(this.url);
-    }
+      mouseY < this.y + this.height
+    );
   }
 
   swiped = (event) => {
