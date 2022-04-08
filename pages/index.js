@@ -101,6 +101,17 @@ export default function Home() {
     }
   };
 
+  let position = 0;
+
+  function mouseWheel(event) {
+    console.log(event);
+    //move the square according to the vertical scroll amount
+    // position += event.deltaY;
+    // onScroll(event, bubbles);
+    //uncomment to block page scrolling
+    //return false;
+  }
+
   return (
     <>
       <Script
@@ -120,7 +131,12 @@ export default function Home() {
           });
         }}
       ></Script>
-      <Sketch setup={setup} draw={draw} preload={preload} />
+      <Sketch
+        setup={setup}
+        draw={draw}
+        preload={preload}
+        mouseWheel={mouseWheel}
+      />
     </>
   );
 }
