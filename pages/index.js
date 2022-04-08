@@ -15,7 +15,7 @@ function useSocket(url) {
   let socketio;
   useEffect(() => {
     fetch(url).finally(() => {
-      socketio = io("/");
+      socketio = io(url);
       setSocket(socketio);
       socketio.on("connect", () => {
         console.log("connect");
