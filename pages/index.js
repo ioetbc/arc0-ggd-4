@@ -92,10 +92,10 @@ export default function Home() {
     //   p5.image(introVideo, 0, 0, p5.width, p5.height);
     // } else {
     for (let b of bubbles) {
-      if (b.type === "video") {
-        video.volume(0);
-        video.loop();
-      }
+      // if (b.type === "video") {
+      //   video.volume(0);
+      //   video.loop();
+      // }
       b.show();
     }
     // }

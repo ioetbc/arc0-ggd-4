@@ -9,7 +9,7 @@ export const createBubbles = (
 ) => {
   for (let p of products) {
     if (p.type === "video") {
-      video = p5.createVideo(p.src, () => handleMediaLoaded(p5));
+      // video = p5.createVideo(p.src, () => handleMediaLoaded(p5));
     } else {
       p.src = p5.loadImage(p.src, () => handleMediaLoaded(p5));
       let bubble = new Bubble(
