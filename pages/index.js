@@ -16,7 +16,7 @@ function useSocket(url) {
   console.log("going to call the server");
   useEffect(() => {
     fetch(url).finally(() => {
-      socketio = io("https://arc-ggd.vercel.app");
+      socketio = io("https://arc-ggd.vercel.app/api/socketio");
       setSocket(socketio);
       socketio.on("connect", () => {
         console.log("connect");
