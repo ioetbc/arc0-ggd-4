@@ -86,19 +86,19 @@ export default function Home() {
 
   const draw = (p5) => {
     p5.background(255);
-    video.hide(); // NEED TO FIX THE VIDEO
+    // video.hide(); // NEED TO FIX THE VIDEO
 
-    if (showIntroVideo) {
-      p5.image(introVideo, 0, 0, p5.width, p5.height);
-    } else {
-      for (let b of bubbles) {
-        if (b.type === "video") {
-          video.volume(0);
-          video.loop();
-        }
-        b.show();
+    // if (showIntroVideo) {
+    //   p5.image(introVideo, 0, 0, p5.width, p5.height);
+    // } else {
+    for (let b of bubbles) {
+      if (b.type === "video") {
+        video.volume(0);
+        video.loop();
       }
+      b.show();
     }
+    // }
   };
 
   let position = 0;
