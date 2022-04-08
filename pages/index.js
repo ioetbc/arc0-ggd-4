@@ -18,7 +18,7 @@ function useSocket(url) {
     fetch(url)
       .catch((error) => console.log("error fetching", error))
       .finally(() => {
-        socketio = io();
+        socketio = io("/api/socketio");
         setSocket(socketio);
         socketio.on("connect", () => {
           console.log("connect");
