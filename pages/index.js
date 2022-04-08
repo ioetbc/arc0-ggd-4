@@ -15,16 +15,14 @@ function useSocket(url) {
   let socketio;
   console.log("going to call the server");
   useEffect(() => {
-    fetch(url)
-      .catch((error) => console.log("error fetching", error))
-      .finally(() => {
-        socketio = io("/api/socketio");
-        setSocket(socketio);
-        socketio.on("connect", () => {
-          console.log("connect");
-          socketio.emit("hello");
-        });
+    fetch(url).finally(() => {
+      socketio = io("https://arc-ggd.vercel.app");
+      setSocket(socketio);
+      socketio.on("connect", () => {
+        console.log("connect");
+        socketio.emit("hello");
       });
+    });
   }, []);
   return socket;
 }
