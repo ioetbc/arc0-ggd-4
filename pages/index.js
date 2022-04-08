@@ -1,13 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import yn from "yn";
+import io, { Socket } from "socket.io-client";
 
 import { onScroll } from "../utils/onScroll";
 import { products } from "../database/products";
 import { handleBubbleClick } from "../utils/handleBubbleClick";
 import { createBubbles } from "../utils/createBubbles";
+
+function useSocket(url) {
+  const [socket, setSocket] = useState(null);
+  let socketio;
+  useEffect(() => {
+    fetch(url).finally(() => {
+      socketio = io();
+      setSocket(socketio);
+      socketio.on("connect", () => {
+        console.log("connect");
+        socketio.emit("hello");
+      });
+    });
+  }, []);
+  return socket;
+}
 
 const Sketch = dynamic(
   () =>
@@ -24,11 +41,45 @@ export default function Home() {
   let hammer;
   let video;
   let logo;
+  let globalAvatar;
   let canvas;
   let introVideo;
   let showIntroVideo = true;
   let skipButton;
   let mediaLoaded = 0;
+
+  const socket = useSocket("/api/socketio");
+  const [message, setMessage] = useState("");
+  const [user, setUser] = useState({});
+
+  const randomNameGenerator = ["Will Cole", "Gordon Hack", "Simao Romulado"];
+  const randomAvatarGenerator = [
+    "https://images.generated.photos/B8uJG-kxy1tOBLP7B13ALhVtr-nc8CTHS70xjAe_N-I/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvODNhYTZk/MDMtMTE0NS00NDgx/LWE5OWItMzExMDEw/YTNlMWFhLmpwZw.jpg",
+    "https://images.generated.photos/bIzwxi6ZOMfLhPsjbUDmi9d9FUctR3e40tsdMCGjbWs/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMGEwNDA5/MzctM2E5NS00ZjMx/LWIyMDctMWY0MjE4/ZjVjODNjLmpwZw.jpg",
+    "https://images.generated.photos/kvHI0jOnvpminaGX2hKZLt6qIeEZTj1Yr5Sceq6R5TQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNjU1YmVj/ZDUtZTBhZS00MDk0/LTk2YjgtNWM2NjU3/Y2FhZjBjLmpwZw.jpg",
+  ];
+  const randomLocationGenerator = ["London", "Berlin", "Amsterdam"];
+
+  const globalUser = {
+    name: randomNameGenerator[
+      Math.floor(Math.random() * randomNameGenerator.length)
+    ],
+    avatar:
+      randomAvatarGenerator[
+        Math.floor(Math.random() * randomAvatarGenerator.length)
+      ],
+    location:
+      randomLocationGenerator[
+        Math.floor(Math.random() * randomLocationGenerator.length)
+      ],
+  };
+
+  let avatarObject = {};
+  function mouseMoved(event) {
+    socket.emit("chat message", {
+      user: { ...globalUser, x: event.mouseX, y: event.mouseY },
+    });
+  }
 
   // USE MOUSEWHEEL INSTEAD OF JS WHEEL EVENT https://p5js.org/reference/#/p5/mouseWheel
   // SEE IF YOU CAN SCRAP HAMMER AND JUST USE MOUSEX AND MOUSEY SEEMS TO BE BUILT IN ALREADY
@@ -39,6 +90,13 @@ export default function Home() {
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (socket)
+  //     socket.on("chat message", function (msg) {
+  //       console.log("msg", msg);
+  //     });
+  // }, [socket]);
 
   const preload = (p5) => {
     introVideo = p5.createVideo("/videos/intro-video.mp4", () =>
@@ -59,6 +117,8 @@ export default function Home() {
     ));
 
     logo = p5.loadImage("/images/webp/logo.webp");
+
+    // globalAvatar = p5.loadImage(user.avatar);
   };
 
   const handleMediaLoaded = (p5) => {
@@ -72,7 +132,8 @@ export default function Home() {
       });
     }
   };
-
+  let loadedAvatar = false;
+  let avatarMessage = {};
   const setup = (p5, canvasParentRef) => {
     showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
@@ -82,12 +143,20 @@ export default function Home() {
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles, video);
     });
+
+    if (socket) {
+      socket.on("chat message", function (msg) {
+        if (!loadedAvatar) loadedAvatar = p5.loadImage(msg.msg.user.avatar);
+        if (loadedAvatar) avatarMessage = msg;
+      });
+    }
   };
 
   const draw = (p5) => {
     p5.background(255);
-    // video.hide(); // NEED TO FIX THE VIDEO
+    // NEED TO FIX THE VIDEO
 
+    // video.hide();
     // if (showIntroVideo) {
     //   p5.image(introVideo, 0, 0, p5.width, p5.height);
     // } else {
@@ -98,6 +167,18 @@ export default function Home() {
       // }
       b.show();
     }
+
+    if (loadedAvatar) {
+      console.log("avatarMessage", avatarMessage.msg.user.x);
+      p5.image(
+        loadedAvatar,
+        avatarMessage.msg.user.x,
+        avatarMessage.msg.user.y,
+        100,
+        100
+      );
+    }
+
     // }
   };
 
@@ -136,6 +217,7 @@ export default function Home() {
         draw={draw}
         preload={preload}
         mouseWheel={mouseWheel}
+        mouseMoved={mouseMoved}
       />
     </>
   );
