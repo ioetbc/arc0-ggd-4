@@ -2,12 +2,14 @@ import { Server } from "socket.io";
 
 const ioHandler = (req, res) => {
   if (!res.socket.server.io) {
-    console.log("*First use, starting socket.io");
-    const io = new Server(res.socket.server);
+    const io = new Server(res.socket.server, {
+      cors: {
+        origin: ["*"],
+      },
+    });
 
     io.on("connection", (socket) => {
       socket.on("chat message", (msg) => {
-        console.log("gunna emit");
         socket.broadcast.emit("chat message", { msg });
       });
     });

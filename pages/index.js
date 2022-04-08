@@ -16,7 +16,7 @@ function useSocket(url) {
   console.log("going to call the server");
   useEffect(() => {
     fetch(url).finally(() => {
-      socketio = io("https://arc-ggd.vercel.app/api/socketio");
+      socketio = io("/");
       setSocket(socketio);
       socketio.on("connect", () => {
         console.log("connect");
@@ -30,7 +30,7 @@ function useSocket(url) {
 const Sketch = dynamic(
   () =>
     import("react-p5").then((mod) => {
-      require("p5/lib/addons/p5.sound");
+      // require("p5/lib/addons/p5.sound");
       return mod.default;
     }),
   { ssr: false }
