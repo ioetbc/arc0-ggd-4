@@ -15,14 +15,16 @@ function useSocket(url) {
   let socketio;
   console.log("going to call the server");
   useEffect(() => {
-    fetch(url).finally(() => {
-      socketio = io();
-      setSocket(socketio);
-      socketio.on("connect", () => {
-        console.log("connect");
-        socketio.emit("hello");
+    fetch(url)
+      .catch((error) => console.log("error fetching", error))
+      .finally(() => {
+        socketio = io();
+        setSocket(socketio);
+        socketio.on("connect", () => {
+          console.log("connect");
+          socketio.emit("hello");
+        });
       });
-    });
   }, []);
   return socket;
 }
