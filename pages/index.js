@@ -13,9 +13,10 @@ import { createBubbles } from "../utils/createBubbles";
 function useSocket(url) {
   const [socket, setSocket] = useState(null);
   let socketio;
+  console.log("going to call the server");
   useEffect(() => {
     fetch(url).finally(() => {
-      socketio = io(url);
+      socketio = io();
       setSocket(socketio);
       socketio.on("connect", () => {
         console.log("connect");
