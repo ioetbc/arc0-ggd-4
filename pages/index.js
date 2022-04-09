@@ -164,7 +164,7 @@ export default function Home() {
   };
 
   const draw = (p5) => {
-    // p5.background(0);
+    p5.background(0);
     // NEED TO FIX THE VIDEO
 
     // video.hide();
