@@ -11,22 +11,25 @@ import { products } from "../database/products";
 import { handleBubbleClick } from "../utils/handleBubbleClick";
 import { createBubbles } from "../utils/createBubbles";
 
-function useSocket(url) {
-  const [socket, setSocket] = useState(null);
-  let socketio;
-  console.log("going to call the server");
-  useEffect(() => {
-    fetch(url).finally(() => {
-      socketio = io();
-      setSocket(socketio);
-      socketio.on("connect", () => {
-        console.log("connect");
-        socketio.emit("hello");
-      });
-    });
-  }, []);
-  return socket;
-}
+// function useSocket(url) {
+//   // const [socket, setSocket] = useState(null);
+//   let socketio = null;
+//   console.log("going to call the server");
+//   useEffect(() => {
+//     fetch(url).finally(() => {
+//       socketio = io();
+//       // setSocket(socketio);
+//       socketio.on("connect", () => {
+//         console.log("connect");
+//         socketio.emit("hello");
+//       });
+
+//       return socketio;
+//     });
+//   }, []);
+//   console.log("socketio", socketio);
+//   return socketio;
+// }
 
 const Sketch = dynamic(
   () =>
@@ -51,10 +54,6 @@ export default function Home() {
   let mediaLoaded = 0;
   let avatar;
 
-  const socket = useSocket("/api/socketio");
-  const [message, setMessage] = useState("");
-  const [user, setUser] = useState({});
-
   const randomNameGenerator = ["Will Cole", "Gordon Hack", "Simao Romulado"];
   const randomAvatarGenerator = [
     "https://images.generated.photos/B8uJG-kxy1tOBLP7B13ALhVtr-nc8CTHS70xjAe_N-I/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvODNhYTZk/MDMtMTE0NS00NDgx/LWE5OWItMzExMDEw/YTNlMWFhLmpwZw.jpg",
@@ -78,6 +77,7 @@ export default function Home() {
 
   const avatarUsers = [];
 
+  const socket = io("https://arc-ggd-api.herokuapp.com");
   function mouseMoved(event) {
     if (socket) {
       socket.emit("chat message", {
