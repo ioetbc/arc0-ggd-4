@@ -16,7 +16,7 @@ function useSocket(url) {
   console.log("going to call the server");
   useEffect(() => {
     fetch(url).finally(() => {
-      socketio = io("/");
+      socketio = io();
       setSocket(socketio);
       socketio.on("connect", () => {
         console.log("connect");
@@ -69,23 +69,32 @@ export default function Home() {
       randomAvatarGenerator[
         Math.floor(Math.random() * randomAvatarGenerator.length)
       ],
-    location:
-      randomLocationGenerator[
-        Math.floor(Math.random() * randomLocationGenerator.length)
-      ],
+    location: "London",
   };
 
-  let avatarObject = {};
+  const avatarUsers = [];
+
   function mouseMoved(event) {
-    socket.emit("chat message", {
-      user: { ...globalUser, x: event.mouseX, y: event.mouseY },
-    });
+    if (socket) {
+      socket.emit("chat message", {
+        user: { ...globalUser, x: event.mouseX, y: event.mouseY },
+      });
+    }
   }
 
   // USE MOUSEWHEEL INSTEAD OF JS WHEEL EVENT https://p5js.org/reference/#/p5/mouseWheel
   // SEE IF YOU CAN SCRAP HAMMER AND JUST USE MOUSEX AND MOUSEY SEEMS TO BE BUILT IN ALREADY
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
+
+    // window.navigator.geolocation.getCurrentPosition(function (position) {
+    //   let lat = position.coords.latitude;
+    //   let long = position.coords.longitude;
+    //   console.log(long);
+    //   globalUser.location = `lat: ${lat.toFixed(2)} long: ${long.toFixed(2)}`;
+    //   console.log("globalUser.location");
+    // });
+
     return () => {
       hammer.destroy();
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
@@ -134,7 +143,7 @@ export default function Home() {
     }
   };
   let loadedAvatar = false;
-  let avatarMessage = {};
+  let avatarMessage = [];
   const setup = (p5, canvasParentRef) => {
     showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
@@ -147,14 +156,15 @@ export default function Home() {
 
     if (socket) {
       socket.on("chat message", function (msg) {
-        if (!loadedAvatar) loadedAvatar = p5.loadImage(msg.msg.user.avatar);
-        if (loadedAvatar) avatarMessage = msg;
+        avatarUsers.push({ image: p5.loadImage(msg.msg.user.avatar), ...msg });
+        if (!loadedAvatar) loadedAvatar = avatarUsers.length > 0;
+        // if (loadedAvatar) avatarMessage.push(msg);
       });
     }
   };
 
   const draw = (p5) => {
-    p5.background(255);
+    // p5.background(0);
     // NEED TO FIX THE VIDEO
 
     // video.hide();
@@ -169,15 +179,17 @@ export default function Home() {
       b.show();
     }
 
-    if (loadedAvatar) {
-      console.log("avatarMessage", avatarMessage.msg.user.x);
-      p5.image(
-        loadedAvatar,
-        avatarMessage.msg.user.x,
-        avatarMessage.msg.user.y,
-        100,
-        100
-      );
+    for (let user of avatarUsers) {
+      if (loadedAvatar) {
+        p5.image(user.image, user.msg.user.x, user.msg.user.y, 100, 100);
+        p5.text(
+          `name: ${user.msg.user.name} location: ${user.msg.user.location}`,
+          user.msg.user.x,
+          user.msg.user.y + 120,
+          80,
+          100
+        );
+      }
     }
 
     // }
