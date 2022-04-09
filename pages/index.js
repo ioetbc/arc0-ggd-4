@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import yn from "yn";
 import io, { Socket } from "socket.io-client";
+import { uuid } from "uuidv4";
 
 import { onScroll } from "../utils/onScroll";
 import { products } from "../database/products";
@@ -48,6 +49,7 @@ export default function Home() {
   let showIntroVideo = true;
   let skipButton;
   let mediaLoaded = 0;
+  let avatar;
 
   const socket = useSocket("/api/socketio");
   const [message, setMessage] = useState("");
@@ -72,12 +74,16 @@ export default function Home() {
     location: "London",
   };
 
+  const avatarId = uuid();
+
   const avatarUsers = [];
 
   function mouseMoved(event) {
     if (socket) {
       socket.emit("chat message", {
-        user: { ...globalUser, x: event.mouseX, y: event.mouseY },
+        avatarId,
+        x: event.mouseX,
+        y: event.mouseY,
       });
     }
   }
@@ -86,27 +92,11 @@ export default function Home() {
   // SEE IF YOU CAN SCRAP HAMMER AND JUST USE MOUSEX AND MOUSEY SEEMS TO BE BUILT IN ALREADY
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
-
-    // window.navigator.geolocation.getCurrentPosition(function (position) {
-    //   let lat = position.coords.latitude;
-    //   let long = position.coords.longitude;
-    //   console.log(long);
-    //   globalUser.location = `lat: ${lat.toFixed(2)} long: ${long.toFixed(2)}`;
-    //   console.log("globalUser.location");
-    // });
-
     return () => {
       hammer.destroy();
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
     };
   }, []);
-
-  // useEffect(() => {
-  //   if (socket)
-  //     socket.on("chat message", function (msg) {
-  //       console.log("msg", msg);
-  //     });
-  // }, [socket]);
 
   const preload = (p5) => {
     introVideo = p5.createVideo("/videos/intro-video.mp4", () =>
@@ -127,7 +117,11 @@ export default function Home() {
     ));
 
     logo = p5.loadImage("/images/webp/logo.webp");
-
+    avatar = p5.loadImage(
+      randomAvatarGenerator[
+        Math.floor(Math.random() * randomAvatarGenerator.length)
+      ]
+    );
     // globalAvatar = p5.loadImage(user.avatar);
   };
 
@@ -155,10 +149,17 @@ export default function Home() {
     });
 
     if (socket) {
-      socket.on("chat message", function (msg) {
-        avatarUsers.push({ image: p5.loadImage(msg.msg.user.avatar), ...msg });
-        if (!loadedAvatar) loadedAvatar = avatarUsers.length > 0;
-        // if (loadedAvatar) avatarMessage.push(msg);
+      socket.on("chat message", function ({ msg }) {
+        const avatarIndex = avatarUsers.findIndex(
+          (user) => user.avatarId === msg.avatarId
+        );
+
+        if (avatarIndex >= 0) {
+          avatarUsers[avatarIndex].x = msg.x;
+          avatarUsers[avatarIndex].y = msg.y;
+        } else {
+          avatarUsers.push({ ...msg });
+        }
       });
     }
   };
@@ -166,7 +167,7 @@ export default function Home() {
   const draw = (p5) => {
     p5.background(0);
     // NEED TO FIX THE VIDEO
-
+    const allMedia = [...bubbles, { avatars: avatarUsers }];
     // video.hide();
     // if (showIntroVideo) {
     //   p5.image(introVideo, 0, 0, p5.width, p5.height);
@@ -176,23 +177,22 @@ export default function Home() {
       //   video.volume(0);
       //   video.loop();
       // }
+
       b.show();
     }
 
     for (let user of avatarUsers) {
-      if (loadedAvatar) {
-        p5.image(user.image, user.msg.user.x, user.msg.user.y, 100, 100);
+      if (avatar) {
+        p5.image(avatar, user.x, user.y, 100, 100);
         p5.text(
-          `name: ${user.msg.user.name} location: ${user.msg.user.location}`,
-          user.msg.user.x,
-          user.msg.user.y + 120,
+          `name: ${user.name} location: ${user.location}`,
+          user.x,
+          user.y + 120,
           80,
           100
         );
       }
     }
-
-    // }
   };
 
   let position = 0;
