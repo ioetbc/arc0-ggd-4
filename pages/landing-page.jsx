@@ -5,7 +5,7 @@ import styled from "styled-components";
 const BgImage = styled.div`
   width: 100%;
   height: 100vh;
-  background-image: url("/images/landing-page/landing-bg.png");
+  background-image: url("/images/landing-page/landing-bg.webp");
   background-position: center;
   transition: filter 0.5s ease;
   filter: ${(props) => (props.removeFilter ? "invert(0)" : "invert(100%)")};
