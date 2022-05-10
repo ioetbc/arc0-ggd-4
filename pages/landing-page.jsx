@@ -20,6 +20,7 @@ const Door = styled.div`
     top: 56%;
     height: 32vh;
     opacity: 0.6;
+    cursor: cell;
   }
 `;
 
