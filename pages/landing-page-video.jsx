@@ -13,7 +13,7 @@ const VideoStyles = styled.div`
   height: 100vh;
 
   @media screen and (min-width: "768px") {
-    padding-top: 58.25%; /* Player ratio: 100 / (1280 / 720) */
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
   }
   video {
     width: 100%;
