@@ -18,6 +18,7 @@ const VideoStyles = styled.div`
   video {
     width: 100%;
     height: auto;
+    max-height: 900px;
     @media screen and (min-width: "768px") {
       height: 100vh;
       position: absolute;
