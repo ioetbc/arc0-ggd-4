@@ -12,7 +12,7 @@ const BgImage = styled.div`
   height: 100vh;
   background-image: url("/images/landing-page/landing-bg.webp");
   background-position: center;
-  transition: all 0.5s ease;
+  transition: filter 0.5s ease;
   filter: ${(props) => (props.removeFilter ? "invert(0)" : "invert(100%)")};
   opacity: ${(props) => (props.hideBg ? 0 : 1)};
 `;
