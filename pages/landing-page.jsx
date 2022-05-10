@@ -32,9 +32,6 @@ const Door = styled.div`
       filter: ${(props) => (props.hideBg ? "invert(100%)" : "invert(0)")};
     }
   }
-
-  .hoverDoor {
-  }
 `;
 
 const LandingPage = () => {
@@ -42,9 +39,9 @@ const LandingPage = () => {
   const [hideBg, setHideBG] = useState(false);
   const handleDoorOpen = () => {
     setHideBG(true);
-    setTimeout(() => {
-      Router.push("landing-page-video");
-    }, 2000);
+    // setTimeout(() => {
+    Router.push("landing-page-video");
+    // }, 2000);
   };
 
   useEffect(() => {
@@ -57,11 +54,6 @@ const LandingPage = () => {
     <Container>
       <BgImage removeFilter={removeFilter} hideBg={hideBg}></BgImage>
       <Door hideBg={hideBg}>
-        {/* <img
-          src="/images/landing-page/door-hover.png"
-          className="test-image"
-          alt="door"
-        ></img> */}
         <div className="door" onClick={handleDoorOpen}></div>
       </Door>
     </Container>
