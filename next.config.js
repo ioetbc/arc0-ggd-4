@@ -11,6 +11,10 @@
 // };
 
 module.exports = {
+  experimental: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
+  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /hammerjs/,
