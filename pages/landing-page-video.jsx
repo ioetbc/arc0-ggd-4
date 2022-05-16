@@ -49,6 +49,7 @@ const LandingPage = () => {
         width={"100%"}
         height={"100vh"}
         src="/videos/intro-video.mp4"
+        preload="metadata"
       ></video>
       <IconContext.Provider value={{ color: "white", size: 30 }}>
         <div>
