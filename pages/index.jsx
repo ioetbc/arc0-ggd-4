@@ -67,7 +67,6 @@ const LandingPage = () => {
           onMouseOver={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         ></div>
-        <img src="/images/landing-page/landing-bg-dark.webp"></img>
       </Door>
     </>
   );
