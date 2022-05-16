@@ -44,7 +44,7 @@ const LandingPage = () => {
   const [hideBg, setHideBG] = useState(false);
   const handleDoorOpen = () => {
     setHideBG(true);
-    Router.push("landing-page-video");
+    Router.push("libidinal-iconography");
   };
 
   useEffect(() => {
