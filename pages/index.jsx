@@ -67,10 +67,6 @@ const LandingPage = () => {
           onMouseOver={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         ></div>
-        <video
-          src="/videos/intro-video.mp4"
-          style={{ display: "none" }}
-        ></video>
       </Door>
     </>
   );
