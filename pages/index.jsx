@@ -68,6 +68,7 @@ const LandingPage = () => {
           onMouseLeave={() => setIsHovering(false)}
         ></div>
       </Door>
+      <video src="/videos/intro-video.mp4" preload="metadata"></video>
     </>
   );
 };
