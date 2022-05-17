@@ -13,8 +13,15 @@ const BgImage = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: filter 0.5s ease;
+  transition: ${(props) =>
+    props.isHovering ? "transform 60s" : "transform 0"};
+  /* transition: filter 0.5s ease; */
+  /* filter: ${(props) =>
+    props.removeFilter ? "invert(0)" : "invert(90%)"}; */
   opacity: ${(props) => (props.hideBg ? 0 : 1)};
+  transform: ${(props) => (props.isHovering ? "scale(1.2)" : "scale()")};
+  transition-delay: ${(props) => (props.isHovering ? "1s" : "0")};
+  transform-origin: center;
 `;
 
 const Door = styled.div`
@@ -35,6 +42,8 @@ const Door = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     transition: background-image 0.5s ease;
+    // make the image glitch
+    // hover over scale in
   }
 `;
 
@@ -50,7 +59,7 @@ const LandingPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setRemoveFilter(true);
-    }, 100);
+    }, 300);
   }, []);
 
   return (
@@ -68,7 +77,6 @@ const LandingPage = () => {
           onMouseLeave={() => setIsHovering(false)}
         ></div>
       </Door>
-      <video src="/videos/intro-video.mp4" preload="metadata"></video>
     </>
   );
 };
