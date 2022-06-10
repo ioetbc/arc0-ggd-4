@@ -1,14 +1,14 @@
 export const products = [
-  // {
-  //   src: "/images/webp/backg2.webp",
-  //   grid: 5,
-  //   x: -500,
-  //   y: -500,
-  //   parallex: 0.5,
-  //   width: 3357,
-  //   height: 2518,
-  // type: 'image',
-  // },
+  {
+    src: "/images/webp/backg2.webp",
+    grid: 5,
+    x: -500,
+    y: -500,
+    parallex: 0.5,
+    width: 3357,
+    height: 2518,
+    type: "image",
+  },
   {
     id: 2,
     src: "/images/webp/merz.webp",

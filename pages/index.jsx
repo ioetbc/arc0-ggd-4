@@ -4,7 +4,9 @@ import styled from "styled-components";
 
 const BgImage = styled.div`
   box-sizing: border-box;
-  height: calc(100vh - 32px);
+  /* height: calc(100vh - 32px); */
+  /* height: calc(100vh - calc(100vh - 100%)); /*
+  height: 100%;
   margin: 16px;
   background-image: ${(props) =>
     props.isHovering

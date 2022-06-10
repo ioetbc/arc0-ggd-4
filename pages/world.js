@@ -40,17 +40,17 @@ export default function Home() {
   const avatarUsers = [];
   const avatarFirstName = faker.name.findName();
 
-  const socket = io("https://arc-ggd-api.herokuapp.com");
-  function mouseMoved(event) {
-    if (socket) {
-      socket.emit("chat message", {
-        avatarId,
-        firstName: avatarFirstName,
-        x: event.mouseX,
-        y: event.mouseY,
-      });
-    }
-  }
+  // const socket = io("https://arc-ggd-api.herokuapp.com");
+  // function mouseMoved(event) {
+  //   if (socket) {
+  //     socket.emit("chat message", {
+  //       avatarId,
+  //       firstName: avatarFirstName,
+  //       x: event.mouseX,
+  //       y: event.mouseY,
+  //     });
+  //   }
+  // }
 
   // USE MOUSEWHEEL INSTEAD OF JS WHEEL EVENT https://p5js.org/reference/#/p5/mouseWheel
   // SEE IF YOU CAN SCRAP HAMMER AND JUST USE MOUSEX AND MOUSEY SEEMS TO BE BUILT IN ALREADY
@@ -105,20 +105,20 @@ export default function Home() {
       handleBubbleClick(p5, bubbles, video);
     });
 
-    if (socket) {
-      socket.on("chat message", function ({ msg }) {
-        const avatarIndex = avatarUsers.findIndex(
-          (user) => user.avatarId === msg.avatarId
-        );
+    // if (socket) {
+    //   socket.on("chat message", function ({ msg }) {
+    //     const avatarIndex = avatarUsers.findIndex(
+    //       (user) => user.avatarId === msg.avatarId
+    //     );
 
-        if (avatarIndex >= 0) {
-          avatarUsers[avatarIndex].x = msg.x;
-          avatarUsers[avatarIndex].y = msg.y;
-        } else {
-          avatarUsers.push({ ...msg });
-        }
-      });
-    }
+    //     if (avatarIndex >= 0) {
+    //       avatarUsers[avatarIndex].x = msg.x;
+    //       avatarUsers[avatarIndex].y = msg.y;
+    //     } else {
+    //       avatarUsers.push({ ...msg });
+    //     }
+    //   });
+    // }
   };
 
   const draw = (p5) => {
@@ -176,13 +176,30 @@ export default function Home() {
           });
         }}
       ></Script>
+
       <Sketch
         setup={setup}
         draw={draw}
         preload={preload}
         mouseWheel={mouseWheel}
-        mouseMoved={mouseMoved}
+        // mouseMoved={mouseMoved}
       />
+      <div
+        style={{
+          color: "red",
+          display: "fixed",
+          bottom: 0,
+          background: "transparent",
+        }}
+      >
+        <p
+          style={{
+            color: "red",
+          }}
+        >
+          arc-ggd
+        </p>
+      </div>
     </>
   );
 }
