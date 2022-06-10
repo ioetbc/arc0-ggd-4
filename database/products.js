@@ -17,7 +17,7 @@ export const products = [
     y: 1050,
     parallex: 2,
     width: 397,
-    height: 67,
+    height: 670,
     type: "image",
   },
   {
