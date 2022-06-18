@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 
+import { Header } from "../components/Header";
+
 const BgImage = styled.div`
   box-sizing: border-box;
   height: calc(100vh - 32px);
@@ -18,7 +20,7 @@ const BgImage = styled.div`
   transition: filter 0.5s ease;
   filter: ${(props) => (props.removeFilter ? "invert(0)" : "invert(90%)")};
   opacity: ${(props) => (props.hideBg ? 0 : 1)};
-  transform: ${(props) => (props.isHovering ? "scale(1.2)" : "scale()")};
+  /* transform: ${(props) => (props.isHovering ? "scale(1.2)" : "scale()")}; */
   transition-delay: ${(props) => (props.isHovering ? "1s" : "0")};
   transform-origin: center;
 `;
@@ -41,8 +43,6 @@ const Door = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     transition: background-image 0.5s ease;
-    // make the image glitch
-    // hover over scale in
   }
 `;
 
@@ -63,6 +63,8 @@ const LandingPage = () => {
 
   return (
     <>
+      <Header world />
+
       <BgImage
         isHovering={isHovering}
         removeFilter={removeFilter}
