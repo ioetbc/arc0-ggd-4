@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 const BgImage = styled.div`
   box-sizing: border-box;
-  /* height: calc(100vh - 32px); */
-  /* height: calc(100vh - calc(100vh - 100%)); /*
-  height: 100%;
+  height: calc(100vh - 32px);
   margin: 16px;
   background-image: ${(props) =>
     props.isHovering
@@ -17,9 +15,8 @@ const BgImage = styled.div`
   background-repeat: no-repeat;
   transition: ${(props) =>
     props.isHovering ? "transform 60s" : "transform 0"};
-  /* transition: filter 0.5s ease; */
-  /* filter: ${(props) =>
-    props.removeFilter ? "invert(0)" : "invert(90%)"}; */
+  transition: filter 0.5s ease;
+  filter: ${(props) => (props.removeFilter ? "invert(0)" : "invert(90%)")};
   opacity: ${(props) => (props.hideBg ? 0 : 1)};
   transform: ${(props) => (props.isHovering ? "scale(1.2)" : "scale()")};
   transition-delay: ${(props) => (props.isHovering ? "1s" : "0")};
