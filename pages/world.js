@@ -7,7 +7,7 @@ import io from "socket.io-client";
 // import { uuid } from "uuidv4";
 const { faker } = require("@faker-js/faker");
 
-import { onScroll } from "../utils/onScroll";
+import { onScroll, onSwipe } from "../utils/onScroll";
 import { products } from "../database/products";
 import { handleBubbleClick } from "../utils/handleBubbleClick";
 import { createBubbles } from "../utils/createBubbles";
@@ -216,9 +216,10 @@ export default function Home() {
           });
 
           hammer.on("pan", (event) => {
-            for (let b of bubbles) {
-              b.swiped(event);
-            }
+            // for (let b of bubbles) {
+            // b.swiped(event);
+            onSwipe(event, bubbles);
+            // }
           });
         }}
       ></Script>

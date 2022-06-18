@@ -87,6 +87,29 @@ const Button = styled.button`
   text-transform: uppercase;
 `;
 
+const Input = styled.div`
+  border: 1px solid black;
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  /* width: 20em;
+  height: 3em; */
+  padding: 4px 32px 4px 16px;
+  overflow: hidden;
+  position: relative;
+
+  select {
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    background-image: none;
+    cursor: pointer;
+  }
+`;
+
 export const ProductDetails = ({
   imageCarousel,
   garmentName,
@@ -138,6 +161,19 @@ export const ProductDetails = ({
               2022
             </Feature>
           </Outro>
+          <PaymentContainer>
+            <PurchaseContainer>
+              <Feature>size:</Feature>
+              <Input>
+                <select name="size" id="size">
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                  <option value="extra large">Extra Large</option>
+                </select>
+              </Input>
+            </PurchaseContainer>
+          </PaymentContainer>
           <PaymentContainer>
             <Feature>price:</Feature>
             <PurchaseContainer>

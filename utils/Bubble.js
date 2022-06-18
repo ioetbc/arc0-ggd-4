@@ -19,7 +19,6 @@ export default class Bubble {
   }
 
   move() {
-    this.x = this.x + this.p5.random(-1, 1);
     this.y = this.y + this.p5.random(-1, 1);
   }
 
@@ -39,6 +38,12 @@ export default class Bubble {
     vx *= 0.95;
     vy *= 0.95;
   }
+
+  // swiped = (event) => {
+
+  //   vx += event.velocityX * this.parallex;
+  //   vy += event.velocityY * this.parallex;
+  // };
 
   contains(mouseX, mouseY) {
     let distance = dist(mouseX, mouseY, this.x, this.y);
@@ -71,9 +76,4 @@ export default class Bubble {
       mouseY < this.y + this.height
     );
   }
-
-  swiped = (event) => {
-    vx += event.velocityX * this.parallex;
-    vy += event.velocityY * this.parallex;
-  };
 }

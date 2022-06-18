@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 
-import { Header } from "../components/Header";
-
 const BgImage = styled.div`
   box-sizing: border-box;
   height: calc(100vh - 32px);
@@ -63,8 +61,6 @@ const LandingPage = () => {
 
   return (
     <>
-      <Header world />
-
       <BgImage
         isHovering={isHovering}
         removeFilter={removeFilter}

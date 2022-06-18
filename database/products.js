@@ -332,7 +332,7 @@ export const products = [
     height: 450,
     type: "video",
   },
-  
+
   {
     src: "/images/webp/ELEPH 2.webp",
     parallex: 4,
