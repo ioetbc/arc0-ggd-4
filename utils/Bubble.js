@@ -19,8 +19,8 @@ export default class Bubble {
   }
 
   move() {
-    this.x = this.x + this.p5.random(-5, 5);
-    this.y = this.y + this.p5.random(-5, 5);
+    this.x = this.x + this.p5.random(-1, 1);
+    this.y = this.y + this.p5.random(-1, 1);
   }
 
   isProduct() {

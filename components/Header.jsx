@@ -1,13 +1,60 @@
-// import { Navigation } from "./Navigation";
-import { Logo } from "./Logo";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import styled from "styled-components";
 
-export const Header = () => (
-  <div
-    className={`flex z-10 justify-between mr-4 mr-4 md:mr-0 md:ml-0 pt-4 h-14 fixed md:relative top-0 pl-4 md:pl-16 pr-4 md:pr-16 md:pt-12 md:mb-8 w-full md:h-28`}
-  >
-    <h1 className="uppercase text-2xl">arc-ggd</h1>
-    <div>
-      <Logo />
-    </div>
-  </div>
-);
+import { Logo } from "./Logo";
+import { Menu } from "./Menu";
+
+const Layout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  z-index: 10;
+  padding: 16px;
+
+  position: ${(props) => props.world && "fixed"};
+  width: ${(props) => props.world && "100%"}; ;
+`;
+
+const Heading = styled.h1`
+  text-transform: uppercase;
+  font-size: 24px;
+`;
+
+export const Header = ({ world }) => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const router = useRouter();
+
+  const handleMouseOver = () => {
+    setOpenMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenMenu(false);
+  };
+
+  return (
+    <>
+      <Layout world={world}>
+        {/* <Menu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
+        <Image
+          width={150}
+          height={30}
+          src={
+            world
+              ? "/images/misc/text-logo-white.svg"
+              : "/images/misc/text-logo-black.svg"
+          }
+          alt="arc-ggd logo"
+        />
+        <Logo
+          world
+          handleMouseOver={handleMouseOver}
+          handleMouseLeave={handleMouseLeave}
+          openMenu={openMenu}
+        />
+      </Layout>
+    </>
+  );
+};

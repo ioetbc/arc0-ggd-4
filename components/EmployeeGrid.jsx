@@ -87,7 +87,12 @@ const Button = styled.button`
   text-transform: uppercase;
 `;
 
-export const ProductDetails = ({
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
+export const EmployeeGrid = ({
   imageCarousel,
   garmentName,
   garmentDimensions,
@@ -100,14 +105,32 @@ export const ProductDetails = ({
     <>
       <Header />
       <Layout>
-        <div>
+        <Grid>
           <Image
-            width={600}
-            height={600}
-            src="/images/product-details/stone-bg.webp"
+            width={400}
+            height={400}
+            src="/images/employees/employee-1.png"
             alt="arc-ggd product"
           />
-        </div>
+          <Image
+            width={400}
+            height={400}
+            src="/images/employees/employee-2.png"
+            alt="arc-ggd product"
+          />
+          <Image
+            width={400}
+            height={400}
+            src="/images/employees/employee-3.png"
+            alt="arc-ggd product"
+          />
+          <Image
+            width={400}
+            height={400}
+            src="/images/employees/employee-4.png"
+            alt="arc-ggd product"
+          />
+        </Grid>
         <Details>
           <GarmentName>{garmentName}</GarmentName>
           <Designer>{designer}</Designer>
@@ -141,7 +164,6 @@ export const ProductDetails = ({
           <PaymentContainer>
             <Feature>price:</Feature>
             <PurchaseContainer>
-              <Feature>£{price.gbp} inc. VAT</Feature>
               <Button>buy</Button>
             </PurchaseContainer>
           </PaymentContainer>
@@ -151,4 +173,4 @@ export const ProductDetails = ({
   );
 };
 
-export default ProductDetails;
+export default EmployeeGrid;

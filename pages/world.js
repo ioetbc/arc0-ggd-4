@@ -4,13 +4,15 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import yn from "yn";
 import io from "socket.io-client";
-import { uuid } from "uuidv4";
+// import { uuid } from "uuidv4";
 const { faker } = require("@faker-js/faker");
 
 import { onScroll } from "../utils/onScroll";
 import { products } from "../database/products";
 import { handleBubbleClick } from "../utils/handleBubbleClick";
 import { createBubbles } from "../utils/createBubbles";
+import { NetworkLoading } from "../components/NetworkLoading";
+import { Header } from "../components/Header";
 
 const Sketch = dynamic(
   () =>
@@ -35,7 +37,7 @@ export default function Home() {
   let mediaLoaded = 0;
   let avatar;
 
-  const avatarId = uuid();
+  // const avatarId = uuid();
 
   const avatarUsers = [];
   const avatarFirstName = faker.name.findName();
@@ -80,7 +82,7 @@ export default function Home() {
       handleMediaLoaded
     ));
 
-    logo = p5.loadImage("/images/webp/logo.webp");
+    // logo = p5.loadImage("/images/webp/logo.webp");
     avatar = p5.loadImage(faker.image.avatar());
   };
 
@@ -157,8 +159,52 @@ export default function Home() {
     //return false;
   }
 
+  const [networkRequests, setNetworkRequests] = useState([]);
+  const inputEl = useRef(null);
+  const fetchRequests = [];
+
+  useEffect(() => {
+    let scripRequests = false;
+    var entries = performance.getEntriesByType("resource");
+    entries.map(function (entry, index) {
+      if (entry.initiatorType === "script" || entry.initiatorType === "link") {
+        console.log("entry", entry);
+        // scripRequests.push(entry.name);
+        setTimeout(() => {
+          inputEl.current.innerHTML += `${entry.name} | ${entry.nextHopProtocol} | ${entry.requestStart} <br>`;
+        }, 300 * index);
+      }
+    });
+
+    window.fetch = new Proxy(window.fetch, {
+      apply(fetch, that, args) {
+        const result = fetch.apply(that, args).then((data, hmm) => {
+          fetchRequests.push(data.url);
+          inputEl.current.innerHTML +=
+            data.url +
+            "&nbsp;|&nbsp;" +
+            data.status +
+            "&nbsp;|&nbsp;" +
+            data.statusText +
+            "<br>";
+          console.log("scripRequests", scripRequests);
+          if (fetchRequests.length === 24) {
+            console.log("remove from dom");
+            setTimeout(() => {
+              inputEl.current.remove();
+            }, 3000);
+          }
+
+          return data;
+        });
+        return result;
+      },
+    });
+  }, []);
+
   return (
     <>
+      <Header world={true} />
       <Script
         id="hammer"
         src="https://hammerjs.github.io/dist/hammer.min.js"
@@ -176,7 +222,20 @@ export default function Home() {
           });
         }}
       ></Script>
-
+      <div
+        style={{
+          position: "fixed",
+          width: "100%",
+          height: "100vh",
+          fontFamily: "monospace",
+          color: "white",
+          overflow: "scroll",
+        }}
+        ref={inputEl}
+      ></div>
+      {/* {networkRequests.length !== products.length && (
+        <NetworkLoading networkRequests={networkRequests} />
+      )} */}
       <Sketch
         setup={setup}
         draw={draw}
@@ -184,22 +243,7 @@ export default function Home() {
         mouseWheel={mouseWheel}
         // mouseMoved={mouseMoved}
       />
-      <div
-        style={{
-          color: "red",
-          display: "fixed",
-          bottom: 0,
-          background: "transparent",
-        }}
-      >
-        <p
-          style={{
-            color: "red",
-          }}
-        >
-          arc-ggd
-        </p>
-      </div>
     </>
+    // )}
   );
 }
