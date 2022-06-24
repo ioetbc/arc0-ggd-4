@@ -57,6 +57,7 @@ const LandingPage = () => {
   return (
     <VideoStyles>
       <video
+        playsinline
         autoPlay
         muted={mute}
         className="react-player"
