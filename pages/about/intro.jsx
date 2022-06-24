@@ -31,7 +31,7 @@ const Info = styled.div`
   font-size: 1.6em;
 `;
 
-export const Intro = () => {
+const Intro = () => {
   return (
     <Container>
       <Pre>
@@ -49,3 +49,5 @@ export const Intro = () => {
     </Container>
   );
 };
+
+export default Intro;
