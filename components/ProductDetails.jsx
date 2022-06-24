@@ -4,6 +4,7 @@ import Image from "next/image";
 import { products } from "../database/products";
 import { Header } from "./Header";
 import { Button } from "./Button";
+import { useEffect } from "react";
 
 const GarmentName = styled.h1`
   font-size: 48px;
@@ -30,10 +31,10 @@ const Designer = styled.h5`
   letter-spacing: 2px;
 `;
 
-// const Body = styled.p`
-//   font-size: 16px;
-//   margin-bottom: 16px;
-// `;
+const Body = styled.p`
+  font-size: 16px;
+  margin-bottom: 16px;
+`;
 
 const Feature = styled.p`
   font-size: 16px;
