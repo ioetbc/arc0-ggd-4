@@ -81,12 +81,6 @@ const PurchaseContainer = styled.div`
   gap: 48px;
 `;
 
-const Button = styled.button`
-  border: 1px solid black;
-  padding: 4px 32px;
-  text-transform: uppercase;
-`;
-
 const Input = styled.div`
   border: 1px solid black;
   text-transform: uppercase;
