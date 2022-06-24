@@ -9,7 +9,11 @@ const Container = styled.div`
   transition-timing-function: ease-out;
   transition-delay: ${(props) => (props.openMenu ? "0s" : "0.3s")};
   height: ${(props) => (props.openMenu ? "300px" : "100px")};
-  width: ${(props) => (props.openMenu ? "400px" : "100px")};
+  width: ${(props) => (props.openMenu ? "calc(100% - 32px)" : "100px")};
+  @media (min-width: 768px) {
+    width: ${(props) => (props.openMenu ? "400px" : "100px")};
+  }
+
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: absolute;
   right: 16px;
@@ -46,7 +50,10 @@ export const Logo = ({ openMenu, handleMouseOver, handleMouseLeave }) => {
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="logo">
+      <div
+        className="logo"
+        onClick={openMenu ? handleMouseLeave : handleMouseOver}
+      >
         <Image
           width={64}
           height={64}

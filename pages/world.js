@@ -58,6 +58,27 @@ export default function Home() {
   // SEE IF YOU CAN SCRAP HAMMER AND JUST USE MOUSEX AND MOUSEY SEEMS TO BE BUILT IN ALREADY
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
+
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        console.log("entry.initiatorType", entry);
+
+        fetchRequests.push(entry.name);
+        inputEl.current.innerHTML += `${entry.name} <br>`;
+
+        if (fetchRequests.length > products.length) {
+          console.log("remove from dom");
+          // setTimeout(() => {
+          inputEl.current.remove();
+          // }, 3000);
+        }
+      }
+    });
+
+    observer.observe({
+      entryTypes: ["resource"],
+    });
+
     return () => {
       hammer.destroy();
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
@@ -148,59 +169,8 @@ export default function Home() {
     }
   };
 
-  let position = 0;
-
-  function mouseWheel(event) {
-    console.log(event);
-    //move the square according to the vertical scroll amount
-    // position += event.deltaY;
-    // onScroll(event, bubbles);
-    //uncomment to block page scrolling
-    //return false;
-  }
-
-  const [networkRequests, setNetworkRequests] = useState([]);
   const inputEl = useRef(null);
   const fetchRequests = [];
-
-  useEffect(() => {
-    let scripRequests = false;
-    var entries = performance.getEntriesByType("resource");
-    entries.map(function (entry, index) {
-      if (entry.initiatorType === "script" || entry.initiatorType === "link") {
-        console.log("entry", entry);
-        // scripRequests.push(entry.name);
-        setTimeout(() => {
-          inputEl.current.innerHTML += `${entry.name} | ${entry.nextHopProtocol} | ${entry.requestStart} <br>`;
-        }, 300 * index);
-      }
-    });
-
-    window.fetch = new Proxy(window.fetch, {
-      apply(fetch, that, args) {
-        const result = fetch.apply(that, args).then((data, hmm) => {
-          fetchRequests.push(data.url);
-          inputEl.current.innerHTML +=
-            data.url +
-            "&nbsp;|&nbsp;" +
-            data.status +
-            "&nbsp;|&nbsp;" +
-            data.statusText +
-            "<br>";
-          console.log("scripRequests", scripRequests);
-          if (fetchRequests.length === 24) {
-            console.log("remove from dom");
-            setTimeout(() => {
-              inputEl.current.remove();
-            }, 3000);
-          }
-
-          return data;
-        });
-        return result;
-      },
-    });
-  }, []);
 
   return (
     <>
@@ -216,10 +186,7 @@ export default function Home() {
           });
 
           hammer.on("pan", (event) => {
-            // for (let b of bubbles) {
-            // b.swiped(event);
             onSwipe(event, bubbles);
-            // }
           });
         }}
       ></Script>
@@ -241,7 +208,7 @@ export default function Home() {
         setup={setup}
         draw={draw}
         preload={preload}
-        mouseWheel={mouseWheel}
+        // mouseWheel={mouseWheel}
         // mouseMoved={mouseMoved}
       />
     </>

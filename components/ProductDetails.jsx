@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { products } from "../database/products";
 import { Header } from "./Header";
-import { useEffect } from "react";
+import { Button } from "./Button";
 
 const GarmentName = styled.h1`
   font-size: 48px;
@@ -30,10 +30,10 @@ const Designer = styled.h5`
   letter-spacing: 2px;
 `;
 
-const Body = styled.p`
-  font-size: 16px;
-  margin-bottom: 16px;
-`;
+// const Body = styled.p`
+//   font-size: 16px;
+//   margin-bottom: 16px;
+// `;
 
 const Feature = styled.p`
   font-size: 16px;
@@ -178,7 +178,7 @@ export const ProductDetails = ({
             <Feature>price:</Feature>
             <PurchaseContainer>
               <Feature>£{price.gbp} inc. VAT</Feature>
-              <Button>buy</Button>
+              <Button text="buy" />
             </PurchaseContainer>
           </PaymentContainer>
         </Details>
