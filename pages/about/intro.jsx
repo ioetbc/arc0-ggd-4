@@ -51,3 +51,13 @@
 // };
 
 // export default Intro;
+
+const Intro = () => {
+  return (
+    <>
+      <p>thing</p>
+    </>
+  );
+};
+
+export default Intro;

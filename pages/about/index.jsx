@@ -62,4 +62,12 @@
 //   );
 // };
 
-// export default About;
+const About = () => {
+  return (
+    <>
+      <p>thing</p>
+    </>
+  );
+};
+
+export default About;
