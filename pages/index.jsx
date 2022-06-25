@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 const BgImage = styled.div`
   box-sizing: border-box;
-  height: calc(100vh - 32px);
-  margin: 16px;
+  /* height: calc(100vh - 32px);*/
+  height: 100vh;
+  border: 16px solid white;
+  /* margin: 16px; */
   background-image: ${(props) =>
     props.isHovering
       ? "url(/images/landing-page/landing-bg-dark.webp)"
