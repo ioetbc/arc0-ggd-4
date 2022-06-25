@@ -61,13 +61,22 @@ const Outro = styled.div`
 `;
 
 const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
   max-width: 1400px;
   min-height: calc(100vh - 62px);
   padding: 16px;
-  margin: 100px auto 0 auto;
+  margin: 0 0 48px 0;
+  /* margin-top: 32px; */
+
+  .feature-image {
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 100px auto 0 auto;
+  }
 `;
 
 const Details = styled.div``;
@@ -118,7 +127,7 @@ export const ProductDetails = ({
     <>
       <Header />
       <Layout>
-        <div>
+        <div className="feature-image">
           <Image
             width={600}
             height={600}
@@ -158,7 +167,7 @@ export const ProductDetails = ({
           </Outro>
           <PaymentContainer>
             <PurchaseContainer>
-              <Feature>size:</Feature>
+              {/* <Feature>size:</Feature> */}
               <Input>
                 <select name="size" id="size">
                   <option value="small">Small</option>
