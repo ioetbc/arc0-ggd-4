@@ -57,7 +57,7 @@ const LandingPage = () => {
   return (
     <VideoStyles>
       <video
-        playsinline
+        playsInline
         autoPlay
         muted={mute}
         className="react-player"
@@ -65,10 +65,10 @@ const LandingPage = () => {
         height={"100vh"}
         src="/videos/intro-video.mp4"
         preload="metadata"
-        id="video-init"
-        onEnded={(hmm) => {
+        onEnded={(video) => {
+          console.log("video ended", video);
           setShowButton(true);
-          hmm.target.play();
+          video.target.play();
         }}
       ></video>
       <IconContext.Provider value={{ color: "white", size: 30 }}>

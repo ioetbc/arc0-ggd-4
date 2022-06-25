@@ -4,10 +4,9 @@ import styled from "styled-components";
 
 const BgImage = styled.div`
   box-sizing: border-box;
-  /* height: calc(100vh - 32px);*/
-  height: 100vh;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
   border: 16px solid white;
-  /* margin: 16px; */
   background-image: ${(props) =>
     props.isHovering
       ? "url(/images/landing-page/landing-bg-dark.webp)"
@@ -55,9 +54,18 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.querySelector("body").style.overflow = "hidden";
+
     setTimeout(() => {
       setRemoveFilter(true);
     }, 300);
+
+    return () => {
+      console.log("cleaning up");
+      document.querySelector("body").style.overflow = "initial";
+    };
   }, []);
 
   return (
