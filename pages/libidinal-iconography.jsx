@@ -28,7 +28,9 @@ const VideoStyles = styled.div`
       left: 0;
     }
   }
-  .mute-icon {
+  .mute-button {
+    border-color: white;
+    color: white;
     position: absolute;
     top: 16px;
     right: 16px;
@@ -42,6 +44,7 @@ const VideoStyles = styled.div`
     right: 16px;
   }
 `;
+const fetchRequests = [];
 
 const LandingPage = () => {
   const [mute, setMute] = useState(true);
@@ -71,13 +74,14 @@ const LandingPage = () => {
         height={"100vh"}
         src="/videos/intro-video.mp4"
         preload="metadata"
+        id="video-element"
         onEnded={(video) => {
           console.log("video ended", video);
           setShowButton(true);
           video.target.play();
         }}
       ></video>
-      <IconContext.Provider value={{ color: "white", size: 30 }}>
+      {/* <IconContext.Provider value={{ color: "white", size: 30 }}>
         <div>
           {mute ? (
             <BiVolume onClick={handleVideoVolume} className="mute-icon" />
@@ -85,7 +89,14 @@ const LandingPage = () => {
             <BiVolumeMute onClick={handleVideoVolume} className="mute-icon" />
           )}
         </div>
-      </IconContext.Provider>
+      </IconContext.Provider> */}
+
+      <Button
+        className="mute-button"
+        onClick={handleVideoVolume}
+        text={mute ? "unmute" : "mute"}
+      />
+
       {showButton && (
         <Button
           onClick={handleSkipButton}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 
@@ -45,6 +45,8 @@ const Door = styled.div`
 `;
 
 const LandingPage = () => {
+  const [networkLoading, setNetworkLoading] = useState(true);
+  const loadingAnimation = useRef(null);
   const [removeFilter, setRemoveFilter] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [hideBg, setHideBG] = useState(false);

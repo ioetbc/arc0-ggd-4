@@ -12,11 +12,6 @@ const NetworkRequests = styled.ul`
 `;
 
 export const NetworkLoading = ({ networkRequests }) => {
-  console.log({
-    NETWORK: networkRequests.length,
-    products: products.length,
-  });
-
   return (
     <NetworkRequests>
       {networkRequests.map((request, index) => (

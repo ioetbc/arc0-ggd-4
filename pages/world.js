@@ -69,7 +69,7 @@ export default function Home() {
         if (fetchRequests.length > products.length) {
           console.log("remove from dom");
           // setTimeout(() => {
-          inputEl.current.remove();
+          // inputEl.current.remove();
           // }, 3000);
         }
       }
