@@ -84,7 +84,7 @@ const LandingPage = () => {
         <Button
           onClick={handleSkipButton}
           className="skip-button"
-          text="skip"
+          text="enter"
         />
       )}
     </VideoStyles>
