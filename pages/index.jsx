@@ -20,7 +20,6 @@ const BgImage = styled.div`
   transition: filter 0.5s ease;
   filter: ${(props) => (props.removeFilter ? "invert(0)" : "invert(90%)")};
   opacity: ${(props) => (props.hideBg ? 0 : 1)};
-  /* transform: ${(props) => (props.isHovering ? "scale(1.2)" : "scale()")}; */
   transition-delay: ${(props) => (props.isHovering ? "1s" : "0")};
   transform-origin: center;
 `;

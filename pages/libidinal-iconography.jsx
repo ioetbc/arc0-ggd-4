@@ -37,7 +37,7 @@ const VideoStyles = styled.div`
   .skip-button {
     border-color: white;
     color: white;
-    position: absolute;
+    position: fixed;
     bottom: 16px;
     right: 16px;
   }
@@ -45,7 +45,7 @@ const VideoStyles = styled.div`
 
 const LandingPage = () => {
   const [mute, setMute] = useState(true);
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
 
   const handleVideoVolume = () => {
     setMute(!mute);
