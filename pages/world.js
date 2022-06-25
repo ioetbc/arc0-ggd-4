@@ -61,16 +61,13 @@ export default function Home() {
 
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        console.log("entry.initiatorType", entry);
-
         fetchRequests.push(entry.name);
         inputEl.current.innerHTML += `${entry.name} <br>`;
 
         if (fetchRequests.length > products.length) {
-          console.log("remove from dom");
-          // setTimeout(() => {
-          // inputEl.current.remove();
-          // }, 3000);
+          setTimeout(() => {
+            inputEl.current.remove();
+          }, 3000);
         }
       }
     });
@@ -188,6 +185,10 @@ export default function Home() {
           hammer.on("pan", (event) => {
             onSwipe(event, bubbles);
           });
+
+          // hammer.on("panend", (event) => {
+          //   onSwipeEnd(event, bubbles);
+          // });
         }}
       ></Script>
       <div
@@ -197,7 +198,6 @@ export default function Home() {
           height: "100vh",
           fontFamily: "monospace",
           color: "white",
-          overflow: "scroll",
         }}
         ref={inputEl}
       ></div>
