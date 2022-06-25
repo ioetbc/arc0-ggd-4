@@ -47,6 +47,12 @@ const LandingPage = () => {
   const [mute, setMute] = useState(true);
   const [showButton, setShowButton] = useState(false);
 
+  useEffect(() => {
+    return () => {
+      document.querySelector("body").style.overflow = "initial";
+    };
+  }, []);
+
   const handleVideoVolume = () => {
     setMute(!mute);
   };

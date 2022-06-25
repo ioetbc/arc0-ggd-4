@@ -61,11 +61,6 @@ const LandingPage = () => {
     setTimeout(() => {
       setRemoveFilter(true);
     }, 300);
-
-    return () => {
-      console.log("cleaning up");
-      document.querySelector("body").style.overflow = "initial";
-    };
   }, []);
 
   return (
