@@ -59,22 +59,22 @@ export default function Home() {
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
 
-    const observer = new PerformanceObserver((list) => {
-      for (const entry of list.getEntries()) {
-        fetchRequests.push(entry.name);
-        inputEl.current.innerHTML += `${entry.name} <br>`;
+    // const observer = new PerformanceObserver((list) => {
+    //   for (const entry of list.getEntries()) {
+    //     fetchRequests.push(entry.name);
+    //     inputEl.current.innerHTML += `${entry.name} <br>`;
 
-        if (fetchRequests.length > products.length) {
-          setTimeout(() => {
-            inputEl.current.remove();
-          }, 3000);
-        }
-      }
-    });
+    //     if (fetchRequests.length > products.length) {
+    //       setTimeout(() => {
+    //         inputEl.current.remove();
+    //       }, 3000);
+    //     }
+    //   }
+    // });
 
-    observer.observe({
-      entryTypes: ["resource"],
-    });
+    // observer.observe({
+    //   entryTypes: ["resource"],
+    // });
 
     return () => {
       hammer.destroy();
