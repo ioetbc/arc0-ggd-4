@@ -81,9 +81,9 @@ export default function Home() {
   }, []);
 
   const preload = (p5) => {
-    introVideo = p5.createVideo("/videos/intro-video.mp4", () =>
-      handleSecondaryMediaLoading(p5)
-    );
+    // introVideo = p5.createVideo("/videos/intro-video.mp4", () =>
+    handleSecondaryMediaLoading(p5);
+    // );
   };
 
   const handleSecondaryMediaLoading = (p5) => {
