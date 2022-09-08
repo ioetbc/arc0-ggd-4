@@ -82,6 +82,7 @@ export default function Home() {
 
   const preload = (p5) => {
     // introVideo = p5.createVideo("/videos/intro-video.mp4", () =>
+    console.log("loading media");
     handleSecondaryMediaLoading(p5);
     // );
   };
@@ -90,6 +91,7 @@ export default function Home() {
     // introVideo.volume(0);
     // introVideo.loop();
     // introVideo.hide();
+    console.log("start creating bubbles");
     ({ video, bubbles } = createBubbles(
       p5,
       products,
@@ -97,6 +99,7 @@ export default function Home() {
       video
       // handleMediaLoaded
     ));
+    console.log("created bubbles");
 
     // logo = p5.loadImage("/images/webp/logo.webp");
     // avatar = p5.loadImage(faker.image.avatar());
@@ -142,7 +145,7 @@ export default function Home() {
   const draw = (p5) => {
     p5.background(0);
     // NEED TO FIX THE VIDEO
-    const allMedia = [...bubbles, { avatars: avatarUsers }];
+    // const allMedia = [...bubbles, { avatars: avatarUsers }];
     // video.hide();
     // if (showIntroVideo) {
     //   p5.image(introVideo, 0, 0, p5.width, p5.height);
@@ -156,12 +159,12 @@ export default function Home() {
       b.show();
     }
 
-    for (let user of avatarUsers) {
-      if (avatar) {
-        p5.image(avatar, user.x, user.y, 100, 100);
-        p5.text(`${user.firstName}`, user.x, user.y + 120, 200, 100);
-      }
-    }
+    // for (let user of avatarUsers) {
+    //   if (avatar) {
+    //     p5.image(avatar, user.x, user.y, 100, 100);
+    //     p5.text(`${user.firstName}`, user.x, user.y + 120, 200, 100);
+    //   }
+    // }
   };
 
   const inputEl = useRef(null);
