@@ -114,7 +114,7 @@ export default function Home() {
   //   }
   // };
   const setup = (p5, canvasParentRef) => {
-    showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
+    // showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
       .parent(canvasParentRef);
