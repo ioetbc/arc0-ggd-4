@@ -59,22 +59,20 @@ export default function Home() {
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
 
-    // const observer = new PerformanceObserver((list) => {
-    //   for (const entry of list.getEntries()) {
-    //     fetchRequests.push(entry.name);
-    //     inputEl.current.innerHTML += `${entry.name} <br>`;
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        fetchRequests.push(entry.name);
+        inputEl.current.innerHTML += `${entry.name} <br>`;
 
-    //     if (fetchRequests.length > products.length) {
-    //       setTimeout(() => {
-    //         inputEl.current.remove();
-    //       }, 3000);
-    //     }
-    //   }
-    // });
+        if (fetchRequests.length > products.length) {
+          inputEl.current.remove();
+        }
+      }
+    });
 
-    // observer.observe({
-    //   entryTypes: ["resource"],
-    // });
+    observer.observe({
+      entryTypes: ["resource"],
+    });
 
     return () => {
       hammer.destroy();
@@ -172,7 +170,7 @@ export default function Home() {
   return (
     <>
       <Header world={true} />
-      {/* <Script
+      <Script
         id="hammer"
         src="https://hammerjs.github.io/dist/hammer.min.js"
         onLoad={() => {
@@ -190,7 +188,7 @@ export default function Home() {
           //   onSwipeEnd(event, bubbles);
           // });
         }}
-      ></Script> */}
+      ></Script>
       <div
         style={{
           position: "fixed",
