@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <>
       <Header world={true} />
-      <Script
+      {/* <Script
         id="hammer"
         src="https://hammerjs.github.io/dist/hammer.min.js"
         onLoad={() => {
@@ -190,7 +190,7 @@ export default function Home() {
           //   onSwipeEnd(event, bubbles);
           // });
         }}
-      ></Script>
+      ></Script> */}
       <div
         style={{
           position: "fixed",
