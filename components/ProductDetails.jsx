@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+// import Carousel from "react-instagram-carousel";
+// import "./react-instagram-carousel/build/style.css";
 import Image from "next/image";
 import { products } from "../database/products";
 import { Header } from "./Header";
@@ -123,6 +125,8 @@ export const ProductDetails = ({
   description,
   price,
 }) => {
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  console.log("imageCarousel", imageCarousel);
   return (
     <>
       <Header />
@@ -134,6 +138,18 @@ export const ProductDetails = ({
             src="/images/product-details/stone-bg.webp"
             alt="arc-ggd product"
           />
+
+          {/* <div style={{ width: "400px", height: "600px" }}>
+            <Carousel
+              nextMsec={3000}
+              barHeight={3}
+              backgroundSize={"contain"}
+              backgroundColor={"white"}
+              images={imageCarousel}
+            />
+          </div>
+
+          <p className="text-right mt-2">( {carouselIndex + 1} )</p> */}
         </div>
         <Details>
           <GarmentName>{garmentName}</GarmentName>

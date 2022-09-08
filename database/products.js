@@ -40,8 +40,8 @@ export const products = [
     type: "product",
     imageCarousel: [
       "/images/webp/placeholder.webp",
-      "/images/webp/flake3.webp",
-      "/images/webp/redgraff.webp",
+      "/images/webp/placeholder.webp",
+      "/images/webp/placeholder.webp",
     ],
     url: "/basic-tshirt",
     description:
@@ -344,8 +344,8 @@ export const products = [
     y: 300,
     imageCarousel: [
       "/images/webp/placeholder.webp",
-      "/images/webp/flake3.webp",
-      "/images/webp/redgraff.webp",
+      "/images/webp/placeholder.webp",
+      "/images/webp/placeholder.webp",
     ],
     url: "/basic-tshirt",
     description:

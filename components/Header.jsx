@@ -26,11 +26,11 @@ export const Header = ({ world }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const router = useRouter();
 
-  const handleMouseOver = () => {
+  const handleOpenMenu = () => {
     setOpenMenu(true);
   };
 
-  const handleMouseLeave = () => {
+  const handleCloseMenu = () => {
     setOpenMenu(false);
   };
 
@@ -50,8 +50,8 @@ export const Header = ({ world }) => {
         />
         <Logo
           world
-          handleMouseOver={handleMouseOver}
-          handleMouseLeave={handleMouseLeave}
+          handleOpenMenu={handleOpenMenu}
+          handleCloseMenu={handleCloseMenu}
           openMenu={openMenu}
         />
       </Layout>
