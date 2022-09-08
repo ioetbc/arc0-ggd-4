@@ -31,7 +31,7 @@ export const createBubbles = (
   }
 
   return {
-    video,
+    // video,
     bubbles,
   };
 };

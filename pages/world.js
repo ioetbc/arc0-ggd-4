@@ -92,14 +92,14 @@ export default function Home() {
     // introVideo.loop();
     // introVideo.hide();
     console.log("start creating bubbles");
-    ({ video, bubbles } = createBubbles(
+    ({ bubbles } = createBubbles(
       p5,
       products,
-      bubbles,
-      video
+      bubbles
+      // video
       // handleMediaLoaded
     ));
-    console.log("created bubbles");
+    console.log("created bubbles", bubbles);
 
     // logo = p5.loadImage("/images/webp/logo.webp");
     // avatar = p5.loadImage(faker.image.avatar());
@@ -118,9 +118,11 @@ export default function Home() {
   // };
   const setup = (p5, canvasParentRef) => {
     // showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
+    console.log("in setup");
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
       .parent(canvasParentRef);
+    console.log("created canvas", canvas);
 
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles, video);
@@ -143,6 +145,7 @@ export default function Home() {
   };
 
   const draw = (p5) => {
+    console.log("in draw");
     p5.background(0);
     // NEED TO FIX THE VIDEO
     // const allMedia = [...bubbles, { avatars: avatarUsers }];
@@ -151,6 +154,7 @@ export default function Home() {
     //   p5.image(introVideo, 0, 0, p5.width, p5.height);
     // } else {
     for (let b of bubbles) {
+      console.log("drawing bubbles");
       // if (b.type === "video") {
       //   video.volume(0);
       //   video.loop();
