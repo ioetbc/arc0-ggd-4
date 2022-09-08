@@ -87,32 +87,32 @@ export default function Home() {
   };
 
   const handleSecondaryMediaLoading = (p5) => {
-    introVideo.volume(0);
-    introVideo.loop();
-    introVideo.hide();
+    // introVideo.volume(0);
+    // introVideo.loop();
+    // introVideo.hide();
     ({ video, bubbles } = createBubbles(
       p5,
       products,
       bubbles,
-      video,
-      handleMediaLoaded
+      video
+      // handleMediaLoaded
     ));
 
     // logo = p5.loadImage("/images/webp/logo.webp");
-    avatar = p5.loadImage(faker.image.avatar());
+    // avatar = p5.loadImage(faker.image.avatar());
   };
 
-  const handleMediaLoaded = (p5) => {
-    mediaLoaded++;
-    if (mediaLoaded === products.length) {
-      skipButton = p5.createButton("skip video");
-      skipButton.position(0, 0);
-      skipButton.style("background-color", "#ff0000");
-      skipButton.mousePressed(() => {
-        showIntroVideo = yn(localStorage.setItem("showIntroVideo", false));
-      });
-    }
-  };
+  // const handleMediaLoaded = (p5) => {
+  //   mediaLoaded++;
+  //   if (mediaLoaded === products.length) {
+  //     skipButton = p5.createButton("skip video");
+  //     skipButton.position(0, 0);
+  //     skipButton.style("background-color", "#ff0000");
+  //     skipButton.mousePressed(() => {
+  //       showIntroVideo = yn(localStorage.setItem("showIntroVideo", false));
+  //     });
+  //   }
+  // };
   const setup = (p5, canvasParentRef) => {
     showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
