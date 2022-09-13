@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
 import { ProductDetails } from "../components/ProductDetails";
 import { Footer } from "../components/Footer";
 import { products } from "../database/products";
 
 const BasicTshirt = () => {
   const product = products?.find((p) => "/basic-tshirt" === p.url);
-  const [networkRequests, setNetworkRequests] = useState([]);
-
-  // console.log("networkRequests", networkRequests);
-
+  console.log("product", product);
   return (
     <>
       <ProductDetails
@@ -19,6 +15,7 @@ const BasicTshirt = () => {
         designer={product.designer}
         description={product.description}
         price={product.price}
+        city={product.city}
       />
       <Footer />
     </>

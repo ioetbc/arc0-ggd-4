@@ -120,25 +120,17 @@ export const ProductDetails = ({
   imageCarousel,
   garmentName,
   garmentDimensions,
+  city,
   sku,
   designer,
   description,
   price,
 }) => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  console.log("imageCarousel", imageCarousel);
   return (
     <>
       <Header />
       <Layout>
         <div className="feature-image">
-          {/* <Image
-            width={600}
-            height={600}
-            src="/images/product-details/stone-bg.webp"
-            alt="arc-ggd product"
-          /> */}
-
           <Carousel
             showArrows={false}
             showIndicators={false}
@@ -146,57 +138,26 @@ export const ProductDetails = ({
             autoPlay={false}
             swipeable={true}
             emulateTouch={true}
+            useKeyboardArrows={true}
           >
-            <div>
-              <img src="/images/product-details/stone-bg.webp" />
-            </div>
-            <div>
-              <img src="/images/product-details/stone-bg.webp" />
-            </div>
-            <div>
-              <img src="/images/product-details/stone-bg.webp" />
-            </div>
+            {imageCarousel.map((src) => (
+              <img key={src} src={src} alt="garment" />
+            ))}
           </Carousel>
-
-          {/* <div style={{ width: "400px", height: "600px" }}>
-            <Carousel
-              nextMsec={3000}
-              barHeight={3}
-              backgroundSize={"contain"}
-              backgroundColor={"white"}
-              images={imageCarousel}
-            />
-          </div>
-
-        
-
-          <p className="text-right mt-2">( {carouselIndex + 1} )</p> */}
         </div>
         <Details>
           <GarmentName>{garmentName}</GarmentName>
           <Designer>{designer}</Designer>
 
           <Intro>
-            <Body>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-              asperiores iusto illo fuga dolorum beatae perferendis eaque id
-              soluta eligendi!
-            </Body>
-            <Body>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-              asperiores iusto illo fuga dolorum beatae perferendis eaque id
-              soluta eligendi!
-            </Body>
-            <Body>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-              asperiores iusto illo fuga dolorum beatae perferendis eaque id
-              soluta eligendi!
-            </Body>
+            <Body>{description}</Body>
           </Intro>
           <Outro>
-            <Feature>designed by {designer} for arc-ggd, munich</Feature>
-            <Feature>m9eztw 2/25kg</Feature>
-            <Feature>munich</Feature>
+            <Feature>
+              designed by {designer} for arc-ggd, {city}
+            </Feature>
+            <Feature>{sku}</Feature>
+            <Feature>{city}</Feature>
             <Feature>
               muc&nbsp;&nbsp;&nbsp;&nbsp;ls128&nbsp;&nbsp;&nbsp;&nbsp;01 feb
               2022
@@ -204,7 +165,6 @@ export const ProductDetails = ({
           </Outro>
           <PaymentContainer>
             <PurchaseContainer>
-              {/* <Feature>size:</Feature> */}
               <Input>
                 <select name="size" id="size">
                   <option value="small">Small</option>
