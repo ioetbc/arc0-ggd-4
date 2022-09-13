@@ -260,7 +260,6 @@ export const products = [
     height: 564,
     type: "image",
   },
-
   {
     src: "/images/webp/purplegraff.webp",
     grid: 5,
@@ -292,16 +291,6 @@ export const products = [
     type: "image",
   },
   {
-    src: "/videos/snoop.mp4",
-    grid: 5,
-    x: 1500,
-    y: 1900,
-    parallex: 4,
-    width: 300,
-    height: 450,
-    type: "video",
-  },
-  {
     src: "/images/webp/sudballons.webp",
     grid: 5,
     x: 500,
@@ -330,6 +319,37 @@ export const products = [
     price: {
       eth: 2,
       gbp: 100,
+      euro: 150,
+    },
+  },
+  {
+    src: "/images/webp/yellowgraf.webp",
+    grid: 5,
+    x: 1000,
+    y: 1000,
+    parallex: 4,
+    width: 372,
+    height: 265,
+    type: "product",
+    imageCarousel: [
+      "/images/product-details/stone-bg.webp",
+      "/images/product-details/stone-bg.webp",
+      "/images/product-details/stone-bg.webp",
+    ],
+    url: "/shit",
+    description: "shit",
+    designer: "shit",
+    sku: "shit",
+    city: "Munich",
+    garmentName: "helion tshirt",
+    garmentDimensions: {
+      width: 1670,
+      height: 2300,
+      type: "image",
+    },
+    price: {
+      eth: 2,
+      gbp: 500,
       euro: 150,
     },
   },
