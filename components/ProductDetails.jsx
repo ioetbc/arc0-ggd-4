@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-// import Carousel from "react-instagram-carousel";
-// import "./react-instagram-carousel/build/style.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import { products } from "../database/products";
 import { Header } from "./Header";
@@ -132,12 +132,31 @@ export const ProductDetails = ({
       <Header />
       <Layout>
         <div className="feature-image">
-          <Image
+          {/* <Image
             width={600}
             height={600}
             src="/images/product-details/stone-bg.webp"
             alt="arc-ggd product"
-          />
+          /> */}
+
+          <Carousel
+            showArrows={false}
+            showIndicators={false}
+            showThumbs={false}
+            autoPlay={false}
+            swipeable={true}
+            emulateTouch={true}
+          >
+            <div>
+              <img src="/images/product-details/stone-bg.webp" />
+            </div>
+            <div>
+              <img src="/images/product-details/stone-bg.webp" />
+            </div>
+            <div>
+              <img src="/images/product-details/stone-bg.webp" />
+            </div>
+          </Carousel>
 
           {/* <div style={{ width: "400px", height: "600px" }}>
             <Carousel
@@ -148,6 +167,8 @@ export const ProductDetails = ({
               images={imageCarousel}
             />
           </div>
+
+        
 
           <p className="text-right mt-2">( {carouselIndex + 1} )</p> */}
         </div>
