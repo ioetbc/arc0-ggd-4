@@ -5,7 +5,6 @@ import isNull from "lodash/isNull";
 import {EmployeeGrid} from "../components/EmployeeGrid";
 import {Footer} from "../components/Footer";
 import {Header} from "../components/Header";
-import {Intro} from "./about/intro";
 import {MainText} from "../components/MainText";
 
 const Layout = styled.div`
@@ -38,6 +37,36 @@ const employeeContent = [
   },
 ];
 
+const Container = styled.div`
+  background: blue;
+  color: yellow;
+  padding: 1.8em 2.4em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6em;
+`;
+
+const Pre = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    font-size: 1.2em;
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: 2.2em;
+  text-transform: uppercase;
+`;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  font-size: 1.6em;
+`;
+
 const About = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   return (
@@ -52,7 +81,23 @@ const About = () => {
               <p>{employeeContent[selectedEmployee]?.body}</p>
             </>
           ) : (
-            <Intro />
+            <Container>
+              <Pre>
+                <p>
+                  Arc-GGD building Services Provision &amp; Estate Management
+                  Ltd.
+                </p>
+                <p>
+                  Arc-GGD Gesellschaft fur Gebaudedienstleistung und
+                  immobilienverwaltunf GmbH.
+                </p>
+              </Pre>
+              <Heading>Kompetent . preiswert . flexibel</Heading>
+              <Info>
+                <h2>general information</h2>
+                <h2>allgemeine informationen</h2>
+              </Info>
+            </Container>
           )}
           <MainText />
         </Details>
