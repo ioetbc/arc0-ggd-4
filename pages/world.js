@@ -1,23 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
-import yn from "yn";
 
-import { onScroll, onSwipe } from "../utils/onScroll";
-import { products } from "../database/products";
-import { handleBubbleClick } from "../utils/handleBubbleClick";
-import { createBubbles } from "../utils/createBubbles";
-import { Header } from "../components/Header";
+import {onScroll, onSwipe} from "../utils/onScroll";
+import {products} from "../database/products";
+import {handleBubbleClick} from "../utils/handleBubbleClick";
+import {createBubbles} from "../utils/createBubbles";
+import {Header} from "../components/Header";
 
-const Sketch = dynamic(() => import("react-p5"), { ssr: false });
+const Sketch = dynamic(() => import("react-p5"), {ssr: false});
 
 export default function Home() {
   let bubbles = [];
   let hammer;
-  let video;
   let canvas;
-  let showIntroVideo = true;
-  let skipButton;
   let mediaLoaded = 0;
 
   useEffect(() => {
@@ -49,34 +45,19 @@ export default function Home() {
   };
 
   const handleSecondaryMediaLoading = (p5) => {
-    ({ video, bubbles } = createBubbles(
-      p5,
-      products,
-      bubbles,
-      video,
-      handleMediaLoaded
-    ));
+    ({bubbles} = createBubbles(p5, products, bubbles, handleMediaLoaded));
   };
 
   const handleMediaLoaded = (p5) => {
     mediaLoaded++;
-    if (mediaLoaded === products.length) {
-      skipButton = p5.createButton("skip video");
-      skipButton.position(0, 0);
-      skipButton.style("background-color", "#ff0000");
-      skipButton.mousePressed(() => {
-        showIntroVideo = yn(localStorage.setItem("showIntroVideo", false));
-      });
-    }
   };
   const setup = (p5, canvasParentRef) => {
-    showIntroVideo = yn(localStorage.getItem("showIntroVideo"));
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
       .parent(canvasParentRef);
 
     canvas.mousePressed(() => {
-      handleBubbleClick(p5, bubbles, video);
+      handleBubbleClick(p5, bubbles);
     });
   };
 
@@ -98,7 +79,7 @@ export default function Home() {
         id="hammer"
         src="https://hammerjs.github.io/dist/hammer.min.js"
         onLoad={() => {
-          hammer = new Hammer(document.body, { preventDefault: true });
+          hammer = new Hammer(document.body, {preventDefault: true});
 
           hammer.get("pan").set({
             direction: Hammer.DIRECTION_ALL,

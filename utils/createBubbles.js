@@ -1,37 +1,32 @@
 import Bubble from "../utils/Bubble";
 
-export const createBubbles = (
-  p5,
-  products,
-  bubbles,
-  video,
-  handleMediaLoaded
-) => {
-  console.log("products", products);
+export const createBubbles = (p5, products, bubbles, handleMediaLoaded) => {
+  const isMobile = p5.windowWidth < 600;
 
   for (let p of products) {
-    if (p.type === "video") {
-      // video = p5.createVideo(p.src, () => handleMediaLoaded(p5));
-    } else {
-      p.src = p5.loadImage(p.src, () => handleMediaLoaded(p5));
-      let bubble = new Bubble(
-        p?.x,
-        p?.y,
-        p?.width,
-        p?.height,
-        p?.type === "video" ? video : p?.src,
-        p?.parallex,
-        p?.id,
-        p5,
-        p?.url,
-        p?.type
-      );
-      bubbles.push(bubble);
-    }
+    p.src = p5.loadImage(p.src, () => handleMediaLoaded(p5));
+
+    const x = isMobile ? p?.x / 2 : p?.x;
+    const y = isMobile ? p?.y / 2 : p?.y;
+    const width = isMobile ? p?.width / 2 : p?.width;
+    const height = isMobile ? p?.height / 2 : p?.height;
+
+    const bubble = new Bubble(
+      x,
+      y,
+      width,
+      height,
+      p?.src,
+      p?.parallex,
+      p?.id,
+      p5,
+      p?.url,
+      p?.type
+    );
+    bubbles.push(bubble);
   }
 
   return {
-    // video,
     bubbles,
   };
 };

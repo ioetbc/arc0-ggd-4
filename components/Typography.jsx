@@ -5,11 +5,7 @@ const H1Styles = styled.h1`
   text-transform: uppercase;
   line-height: 1;
   width: 100px;
-  @font-face {
-    font-family: FreeSaneBold;
-    src: url("fonts/free-sans-bold.otf") format("opentype");
-  }
-  font-family: FreeSaneBold;
+  font-family: FreeSansBold;
   letter-spacing: 5px;
   margin-bottom: 24px;
 `;
@@ -18,11 +14,7 @@ const H5Styles = styled.h5`
   font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  @font-face {
-    font-family: FreeSaneBold;
-    src: url("fonts/free-sans-bold.otf") format("opentype");
-  }
-  font-family: FreeSaneBold;
+  font-family: FreeSansBold;
 `;
 
 const BodyStyles = styled.p`
@@ -35,7 +27,7 @@ const FeatureStyles = styled.p`
   text-transform: uppercase;
 `;
 
-export const H1 = ({ text }) => <H1Styles>{text}</H1Styles>;
-export const H5 = ({ text }) => <H5Styles>{text}</H5Styles>;
-export const Body = ({ text }) => <BodyStyles>{text}</BodyStyles>;
-export const Feature = ({ text }) => <FeatureStyles>{text}</FeatureStyles>;
+export const H1 = ({text}) => <H1Styles>{text}</H1Styles>;
+export const H5 = ({text}) => <H5Styles>{text}</H5Styles>;
+export const Body = ({text}) => <BodyStyles>{text}</BodyStyles>;
+export const Feature = ({text}) => <FeatureStyles>{text}</FeatureStyles>;

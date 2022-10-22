@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Router from "next/router";
 import styled from "styled-components";
-import { IconContext } from "react-icons";
-import { BiVolume, BiVolumeMute } from "react-icons/bi";
+import {IconContext} from "react-icons";
+import {BiVolume, BiVolumeMute} from "react-icons/bi";
 
-import { Button } from "../components/Button";
+import {Button} from "../components/Button";
 
 const VideoStyles = styled.div`
   position: relative;
@@ -37,11 +37,13 @@ const VideoStyles = styled.div`
     cursor: pointer;
   }
   .skip-button {
+    width: 140px;
     border-color: white;
     color: white;
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
 `;
 const fetchRequests = [];

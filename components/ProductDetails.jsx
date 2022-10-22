@@ -1,23 +1,15 @@
-import { useState } from "react";
 import styled from "styled-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
-import { products } from "../database/products";
-import { Header } from "./Header";
-import { Button } from "./Button";
-import { useEffect } from "react";
+import {Carousel} from "react-responsive-carousel";
+import {Header} from "./Header";
+import {Button} from "./Button";
 
 const GarmentName = styled.h1`
   font-size: 48px;
   text-transform: uppercase;
   line-height: 1;
   width: 100px;
-  @font-face {
-    font-family: FreeSaneBold;
-    src: url("fonts/free-sans-bold.otf") format("opentype");
-  }
-  font-family: FreeSaneBold;
+  font-family: FreeSansBold;
   letter-spacing: 5px;
   margin-bottom: 24px;
 `;
@@ -25,17 +17,16 @@ const GarmentName = styled.h1`
 const Designer = styled.h5`
   font-size: 16px;
   text-transform: uppercase;
-  @font-face {
-    font-family: FreeSaneBold;
-    src: url("fonts/free-sans-bold.otf") format("opentype");
-  }
-  font-family: FreeSaneBold;
+
+  font-family: FreeSansBold;
   letter-spacing: 2px;
 `;
 
 const Body = styled.p`
   font-size: 16px;
   margin-bottom: 16px;
+
+  font-family: FreeSans;
 `;
 
 const Feature = styled.p`
@@ -132,7 +123,7 @@ export const ProductDetails = ({
       <Layout>
         <div className="feature-image">
           <Carousel
-            showArrows={false}
+            showArrows={true}
             showIndicators={false}
             showThumbs={false}
             autoPlay={false}

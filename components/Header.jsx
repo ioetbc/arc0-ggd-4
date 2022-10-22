@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
+import {useState} from "react";
+import {useRouter} from "next/router";
 import Image from "next/image";
 import styled from "styled-components";
 
-import { Logo } from "./Logo";
-import { Menu } from "./Menu";
+import {Logo} from "./Logo";
 
 const Layout = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const Heading = styled.h1`
   font-size: 24px;
 `;
 
-export const Header = ({ world }) => {
+export const Header = ({world}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const router = useRouter();
 
@@ -37,7 +36,6 @@ export const Header = ({ world }) => {
   return (
     <>
       <Layout world={world}>
-        {/* <Menu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
         <Image
           width={150}
           height={30}

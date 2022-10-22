@@ -20,15 +20,11 @@ const Container = styled.footer`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 24px;
-    font-size: 24px;
+    font-size: 18px;
   }
-  @font-face {
-    font-family: FreeSaneBold;
-    src: url("fonts/free-sans-bold.otf") format("opentype");
-  }
-  font-family: FreeSaneBold;
+  font-family: FreeSansBold;
   letter-spacing: 2px;
-  line-height: 1.2;
+  line-height: 1.4;
 `;
 
 const Body = styled.p`
