@@ -2,13 +2,13 @@ import { useRouter } from "next/router";
 
 import { ProductDetails } from "../../components/ProductDetails";
 import { Footer } from "../../components/Footer";
-import { products } from "../../database/products";
+import { products } from "../../database/SM_Prints";
 
 const Product = () => {
   const router = useRouter();
   const path = router.query.index;
   console.log("path", path);
-  const product = products?.find((p) => `/${path}` === p.url);
+  const product = products?.find((p) => `/products/${path}` === p.url);
   console.log("product", product);
   if (!product) return null;
   return (

@@ -5,7 +5,7 @@ export const handleBubbleClick = (p5, bubbles) => {
     const bubbleClicked = b.clicked(p5.mouseX, p5.mouseY);
     if (bubbleClicked) {
       if (b.url) {
-        window.location.pathname = `/products/${b.url}`;
+        window.location.pathname = `/${b.url}`;
       }
     }
   }

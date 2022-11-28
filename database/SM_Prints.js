@@ -403,7 +403,7 @@ export const products = [
       "/images/product-details/stone-bg.webp",
       "/images/product-details/stone-bg.webp",
     ],
-    url: "/Small-Motif-Gallery",
+    url: "/products/gordon",
     description: "dwdwdwdt.",
     designer: "gordon Cole",
     sku: "Another",
