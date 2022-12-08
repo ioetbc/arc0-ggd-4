@@ -8,12 +8,12 @@ import {Logo} from "./Logo";
 const Layout = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: start;
   z-index: 10;
   padding: 16px;
-
+  /* background: red; */
   position: ${(props) => props.world && "fixed"};
-  width: ${(props) => props.world && "100%"}; ;
+  width: ${(props) => props.world && "100%"};
+  height: 100px;
 `;
 
 const Heading = styled.h1`

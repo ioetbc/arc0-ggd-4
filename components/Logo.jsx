@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useState } from "react";
-import { useEffect } from "react";
+import {useState} from "react";
+import {useEffect} from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -10,10 +10,10 @@ const Container = styled.div`
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
   transition-delay: ${(props) => (props.openMenu ? "0s" : "0.3s")};
-  height: ${(props) => (props.openMenu ? "300px" : "100px")};
-  width: ${(props) => (props.openMenu ? "calc(100% - 32px)" : "100px")};
+  height: ${(props) => (props.openMenu ? "300px" : "70px")};
+  width: ${(props) => (props.openMenu ? "calc(100% - 32px)" : "70px")};
   @media (min-width: 768px) {
-    width: ${(props) => (props.openMenu ? "400px" : "100px")};
+    width: ${(props) => (props.openMenu ? "400px" : "70px")};
   }
 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -23,8 +23,9 @@ const Container = styled.div`
   .logo {
     display: flex;
     position: absolute;
-    right: 18px;
-    top: 18px;
+    right: 10px;
+    top: 10px;
+    width: 50px;
     transition: transform 0.7s ease-in-out;
     transform: ${(props) => (props.openMenu ? "rotate(180deg)" : "rotate(0)")};
   }
@@ -46,7 +47,7 @@ const Container = styled.div`
   }
 `;
 
-export const Logo = ({ openMenu, handleOpenMenu, handleCloseMenu }) => {
+export const Logo = ({openMenu, handleOpenMenu, handleCloseMenu}) => {
   const [isMobile, setIsMobile] = useState(false);
   console.log("openMenu", openMenu);
 

@@ -66,7 +66,7 @@ const Layout = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 42px;
-    margin: 50px auto 0 auto;
+    margin: 12px auto 0 auto;
   }
 `;
 
