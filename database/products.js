@@ -384,7 +384,7 @@ export const products = [
     height: 561,
     type: "image",
   },
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   {
     src: "/images/webp/ClothingPortalImageDS.webp",
     grid: 5,
@@ -403,6 +403,14 @@ export const products = [
       "/images/product-details/stone-bg.webp",
       "/images/product-details/stone-bg.webp",
       "/images/product-details/stone-bg.webp",
+    ],
+    stripeLinks: [
+      {
+        small: "https://www.stripe.com/gb",
+        medium: "https://www.stripe.com/gb",
+        large: "https://www.stripe.com/gb",
+        extraLarge: "https://www.stripe.com/gb",
+      },
     ],
     url: "/LSPortal",
     description: "dwdwdwdt.",
@@ -431,11 +439,9 @@ export const products = [
     width: 531,
     height: 543,
     type: "product",
-    imageCarousel: [
-     
-    ],
+    imageCarousel: [],
     url: "/SmallPortal",
-    description:"",
+    description: "",
     designer: "",
     sku: "",
     city: "",
@@ -452,5 +458,4 @@ export const products = [
     },
   },
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 ];

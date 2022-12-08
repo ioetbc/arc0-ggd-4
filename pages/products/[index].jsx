@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
-import { ProductDetails } from "../../components/ProductDetails";
-import { Footer } from "../../components/Footer";
-import { clothes } from "../../database/LSPortalDB";
-import { prints } from "../../database/SMPortalDB";
+import {ProductDetails} from "../../components/ProductDetails";
+import {Footer} from "../../components/Footer";
+import {clothes} from "../../database/LSPortalDB";
+import {prints} from "../../database/SMPortalDB";
 
 const Product = () => {
   const router = useRouter();
   const path = router.query.index;
   console.log("path", path);
-  const all = [...prints, ...clothes]
+  const all = [...prints, ...clothes];
   const product = all?.find((p) => `/products/${path}` === p.url);
   console.log("product", product);
   if (!product) return null;
@@ -26,6 +26,7 @@ const Product = () => {
         description3={product.description3}
         price={product.price}
         city={product.city}
+        stripeLinks={product.stripeLinks}
       />
       <Footer />
     </>

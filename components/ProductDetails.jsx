@@ -3,12 +3,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import {Carousel} from "react-responsive-carousel";
 import {Header} from "./Header";
 import {Button} from "./Button";
+import {useState} from "react";
 
 const GarmentName = styled.h1`
   font-size: 48px;
   text-transform: uppercase;
   line-height: 1;
-  width: 100px;
+  width: 500px;
   font-family: FreeSansBold;
   letter-spacing: 4px;
   margin-bottom: 24px;
@@ -54,12 +55,9 @@ const Outro = styled.div`
 `;
 
 const Layout = styled.div`
-  max-width: 1400px;
   min-height: calc(100vh - 62px);
   padding: 16px;
   margin: 0 0 48px 0;
-  /* margin-top: 32px; */
-
   .feature-image {
     margin-bottom: 32px;
   }
@@ -67,21 +65,42 @@ const Layout = styled.div`
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 100px auto 0 auto;
+    gap: 42px;
+    margin: 50px auto 0 auto;
   }
 `;
 
-const Details = styled.div``;
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  just
+`;
 
 const PaymentContainer = styled.div`
   margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  flex: "end";
+  gap: 24px;
 `;
 
 const PurchaseContainer = styled.div`
   display: flex;
-  align-items: center;
   gap: 48px;
+`;
+
+const ActionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
 `;
 
 const Input = styled.div`
@@ -89,20 +108,20 @@ const Input = styled.div`
   text-transform: uppercase;
   position: relative;
   display: flex;
-  /* width: 20em;
-  height: 3em; */
-  padding: 4px 32px 4px 16px;
+  text-align: center;
+  width: 8rem;
+  height: 2rem;
   overflow: hidden;
   position: relative;
+  padding-right: 1rem;
 
   select {
-    /* Reset Select */
-    appearance: none;
     outline: 0;
     border: 0;
     box-shadow: none;
-    /* Personalize */
-    background-image: none;
+    width: 100%;
+    text-align: center;
+    background-size: 20px;
     cursor: pointer;
   }
 `;
@@ -118,7 +137,14 @@ export const ProductDetails = ({
   description2,
   description3,
   price,
+  stripeLinks,
 }) => {
+  const [stripeLink, setStripeLink] = useState(stripeLinks[0].small);
+  const handleSizeChange = (event) => {
+    const url = stripeLinks.find((link) => link[event.target.value]);
+    setStripeLink(Object.values(url)[0]);
+  };
+
   return (
     <>
       <Header />
@@ -139,44 +165,53 @@ export const ProductDetails = ({
           </Carousel>
         </div>
         <Details>
-          <GarmentName>{garmentName}</GarmentName>
-          <Designer>{designer}</Designer>
+          <div>
+            <GarmentName>{garmentName}</GarmentName>
+            <Designer>{designer}</Designer>
 
-          <Intro>
-            <Body>{description}</Body>
-            <Body>{description2}</Body>
-            <Body>{description3}</Body>
-          </Intro>
-          <Outro>
-            <Feature>
-              designed by {designer} for arc-ggd, {city}
-            </Feature>
-            <Feature>{sku}</Feature>
-            <Feature>{city}</Feature>
-            <Feature>
-              muc&nbsp;&nbsp;&nbsp;&nbsp;ls128&nbsp;&nbsp;&nbsp;&nbsp;01 feb
-              2022
-            </Feature>
-          </Outro>
-          <PaymentContainer>
-            <PurchaseContainer>
-              <Input>
-                <select name="size" id="size">
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
-                  <option value="extra large">Extra Large</option>
-                </select>
-              </Input>
-            </PurchaseContainer>
-          </PaymentContainer>
-          <PaymentContainer>
-            <Feature>price:</Feature>
-            <PurchaseContainer>
-              <Feature>£{price.gbp}</Feature>
-              <Button text="buy" />
-            </PurchaseContainer>
-          </PaymentContainer>
+            <Intro>
+              <Body>{description}</Body>
+              <Body>{description2}</Body>
+              <Body>{description3}</Body>
+            </Intro>
+          </div>
+          <div>
+            <Outro>
+              <Feature>
+                designed by {designer} for arc-ggd, {city}
+              </Feature>
+              <Feature>{sku}</Feature>
+              <Feature>{city}</Feature>
+              <Feature>
+                muc&nbsp;&nbsp;&nbsp;&nbsp;ls128&nbsp;&nbsp;&nbsp;&nbsp;01 feb
+                2022
+              </Feature>
+            </Outro>
+
+            <ActionContainer>
+              <PaymentContainer>
+                <Feature>price:</Feature>
+                <Feature>£{price.gbp}</Feature>
+              </PaymentContainer>
+              <ButtonContainer>
+                <PurchaseContainer>
+                  <Input>
+                    <select name="size" id="size" onChange={handleSizeChange}>
+                      {stripeLinks.map((link) => (
+                        <option
+                          key={Object.keys(link)[0]}
+                          value={Object.keys(link)[0]}
+                        >
+                          {Object.keys(link)[0].toUpperCase()}
+                        </option>
+                      ))}
+                    </select>
+                  </Input>
+                </PurchaseContainer>
+                <Button onClick={() => window.open(stripeLink)} text="buy" />
+              </ButtonContainer>
+            </ActionContainer>
+          </div>
         </Details>
       </Layout>
     </>
