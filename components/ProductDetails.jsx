@@ -9,10 +9,13 @@ const GarmentName = styled.h1`
   font-size: 48px;
   text-transform: uppercase;
   line-height: 1;
-  width: 500px;
   font-family: FreeSansBold;
   letter-spacing: 4px;
   margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 const Designer = styled.h5`
@@ -40,7 +43,7 @@ const Intro = styled.div`
 `;
 
 const Outro = styled.div`
-  margin-top: 84px;
+  /* margin-top: 84px; */
   padding-top: 12px;
   position: relative;
   &:after {
@@ -55,25 +58,32 @@ const Outro = styled.div`
 `;
 
 const Layout = styled.div`
-  min-height: calc(100vh - 62px);
+  height: 100%;
   padding: 16px;
-  margin: 0 0 48px 0;
-  .feature-image {
-    margin-bottom: 32px;
-  }
+  margin: 0 0 100px 0;
+
+  /* @media (min-width: 540px) {
+    display: grid;
+    gap: 42px;
+    grid-template-columns: 1fr 1fr;
+  } */
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 42px;
-    margin: 12px auto 0 auto;
+    grid-template-columns: 1fr 1fr;
+    margin: 12px auto 100px auto;
   }
 `;
 
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  just
+  justify-content: space-between;
+  margin-top: 48px;
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 const PaymentContainer = styled.div`
@@ -149,7 +159,7 @@ export const ProductDetails = ({
     <>
       <Header />
       <Layout>
-        <div className="feature-image">
+        <div>
           <Carousel
             showArrows={true}
             showIndicators={false}
