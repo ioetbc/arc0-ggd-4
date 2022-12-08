@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import {onScroll, onSwipe} from "../utils/onScroll";
-import {products} from "../database/SM_Prints";
+import {prints} from "../database/SMPortalDB";
 import {handleBubbleClick} from "../utils/handleBubbleClick";
 import {createBubbles} from "../utils/createBubbles";
 import {Header} from "../components/Header";
@@ -24,7 +24,7 @@ export default function Gallery() {
         fetchRequests.push(entry.name);
         inputEl.current.innerHTML += `${entry.name} <br>`;
 
-        if (fetchRequests.length > products.length) {
+        if (fetchRequests.length > prints.length) {
           inputEl.current.remove();
         }
       }
@@ -45,7 +45,7 @@ export default function Gallery() {
   };
 
   const handleSecondaryMediaLoading = (p5) => {
-    ({bubbles} = createBubbles(p5, products, bubbles, handleMediaLoaded));
+    ({bubbles} = createBubbles(p5, prints, bubbles, handleMediaLoaded));
   };
 
   const handleMediaLoaded = (p5) => {

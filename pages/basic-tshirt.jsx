@@ -14,6 +14,8 @@ const BasicTshirt = () => {
         sku={product.sku}
         designer={product.designer}
         description={product.description}
+        description2={product.description2}
+        description3={product.description3}
         price={product.price}
         city={product.city}
       />

@@ -13,7 +13,7 @@ export const preloadCanvas = (p5) => {
     }
   }
 
-  logo = p5.loadImage("/images/webp/logo.webp");
+  logo = p5.loadImage("/images/webp/logo2.png");
   p5.soundFormats("mp3");
   song = p5.loadSound("/sounds/orgasm-slaps.mp3");
 

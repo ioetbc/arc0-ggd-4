@@ -10,7 +10,7 @@ const GarmentName = styled.h1`
   line-height: 1;
   width: 100px;
   font-family: FreeSansBold;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   margin-bottom: 24px;
 `;
 
@@ -115,6 +115,8 @@ export const ProductDetails = ({
   sku,
   designer,
   description,
+  description2,
+  description3,
   price,
 }) => {
   return (
@@ -142,6 +144,8 @@ export const ProductDetails = ({
 
           <Intro>
             <Body>{description}</Body>
+            <Body>{description2}</Body>
+            <Body>{description3}</Body>
           </Intro>
           <Outro>
             <Feature>
@@ -169,7 +173,7 @@ export const ProductDetails = ({
           <PaymentContainer>
             <Feature>price:</Feature>
             <PurchaseContainer>
-              <Feature>£{price.gbp} inc. VAT</Feature>
+              <Feature>£{price.gbp}</Feature>
               <Button text="buy" />
             </PurchaseContainer>
           </PaymentContainer>

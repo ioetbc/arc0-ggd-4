@@ -75,7 +75,7 @@ export const Logo = ({ openMenu, handleOpenMenu, handleCloseMenu }) => {
         <Image
           width={64}
           height={64}
-          src="/images/misc/logo.webp"
+          src="/images/misc/logo2.png"
           alt="arc-ggd logo"
         />
       </div>

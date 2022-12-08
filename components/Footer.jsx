@@ -119,15 +119,8 @@ export const Footer = () => {
       </Spacer>
       <Spacer>
         <Body>
-          ARC-GGD GmbH is subject to management and coordination by KiK
-          Textilien und Non-Food GmbH, a subsidiary of Tengelmann
-          Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company
-          subject to management and coordination by New Guards Group Holding
-          S.p.A, pursuant to art. 2497 and following of the Italian civil code.
-          VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 | P.IVA
-          08262010963 | county@pec.net | Share capital declared on the form used
-          to file the the list of shareholders: 12.000,00 Euro | Corporation
-        </Body>
+        Arc-GGD GmbH is subject to management and coordination by KiK Textilien und Non-Food GmbH, a subsidiary of Tengelmann Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company operations overseen by the Bayerische Verwaltung der staatlichen Schlösser, Gärten und Seen (Verwaltung Englischer Garten) | B.V.s.S,G,S (V.E.G) | Italian representation via Anti-Recupero Group Holding S.p.A, pursuant to art. 2497 and following of the Italian civil code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 | P.IVA 08262010963 | county@pec.net | Share capital declared on the form used to file the the list of shareholders: 12.000,00 Euro.
+                </Body>
       </Spacer>
     </Layout>
   );
