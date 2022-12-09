@@ -7,7 +7,7 @@ import {useState} from "react";
 import {Accordion} from "./Accordion";
 
 const GarmentName = styled.h1`
-  font-size: 48px;
+  font-size: 32px;
   text-transform: uppercase;
   line-height: 1;
   font-family: FreeSansBold;
@@ -15,6 +15,7 @@ const GarmentName = styled.h1`
   margin-bottom: 24px;
 
   @media (min-width: 900px) {
+    font-size: 48px;
     width: 500px;
   }
 `;
