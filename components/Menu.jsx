@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 const MenuItem = styled.h3`
   text-transform: uppercase;
   font-size: 24px;
+  cursor: pointer;
 `;
 
 const Divider = styled.div`
