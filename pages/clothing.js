@@ -16,16 +16,9 @@ export default function Gallery() {
   let canvas;
 
   useEffect(() => {
-    window.addEventListener("wheel", (event) => onScroll(event, bubbles));
-
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        fetchRequests.push(entry.name);
         inputEl.current.innerHTML += `${entry.name} <br>`;
-
-        if (fetchRequests.length > clothes.length) {
-          inputEl.current.remove();
-        }
       }
     });
 
@@ -50,6 +43,9 @@ export default function Gallery() {
       .createCanvas(window.innerWidth, window.innerHeight)
       .parent(canvasParentRef);
 
+    window.addEventListener("wheel", (event) => onScroll(event, bubbles));
+    inputEl.current.remove();
+
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles);
     });
@@ -64,7 +60,6 @@ export default function Gallery() {
   };
 
   const inputEl = useRef(null);
-  const fetchRequests = [];
 
   return (
     <>

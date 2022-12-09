@@ -50,7 +50,6 @@ const Container = styled.div`
 
 export const Logo = ({openMenu, handleOpenMenu, handleCloseMenu}) => {
   const [isMobile, setIsMobile] = useState(false);
-  console.log("openMenu", openMenu);
 
   useEffect(() => {
     if (

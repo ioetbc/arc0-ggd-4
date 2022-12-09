@@ -78,7 +78,6 @@ const LandingPage = () => {
         preload="metadata"
         id="video-element"
         onEnded={(video) => {
-          console.log("video ended", video);
           setShowButton(true);
           video.target.play();
         }}

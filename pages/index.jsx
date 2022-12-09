@@ -50,7 +50,7 @@ const LandingPage = () => {
   const [hideBg, setHideBG] = useState(false);
   const handleDoorOpen = () => {
     setHideBG(true);
-    Router.push("libidinal-iconography");
+    Router.push("/world");
   };
 
   useEffect(() => {
