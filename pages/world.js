@@ -44,7 +44,9 @@ export default function Home() {
       .parent(canvasParentRef);
 
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
-    inputEl.current.remove();
+    if (inputEl.current) {
+      inputEl.current.remove();
+    }
 
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles);
