@@ -61,7 +61,7 @@ export const prints = [
     type: "image",
   },
   {
-    src: "/images/PrintPortal/FatInk3.svg",
+    src: "/images/PrintPortal/fatInk3.svg",
     grid: 5,
     x: -800,
     y: -500,
