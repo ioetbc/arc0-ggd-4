@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import {onScroll, onSwipe} from "../utils/onScroll";
-import {clothes} from "../database/LSPortalDB";
+import {clothes} from "../database/clothing";
 import {handleBubbleClick} from "../utils/handleBubbleClick";
 import {createBubbles} from "../utils/createBubbles";
 import {Header} from "../components/Header";
@@ -14,7 +14,6 @@ export default function Gallery() {
   let bubbles = [];
   let hammer;
   let canvas;
-  let mediaLoaded = 0;
 
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
@@ -35,22 +34,17 @@ export default function Gallery() {
     });
 
     return () => {
-      hammer.destroy();
+      if (hammer) {
+        hammer.destroy();
+      }
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
     };
   }, []);
 
   const preload = (p5) => {
-    handleSecondaryMediaLoading(p5);
+    createBubbles(p5, clothes, bubbles);
   };
 
-  const handleSecondaryMediaLoading = (p5) => {
-    ({bubbles} = createBubbles(p5, clothes, bubbles, handleMediaLoaded));
-  };
-
-  const handleMediaLoaded = (p5) => {
-    mediaLoaded++;
-  };
   const setup = (p5, canvasParentRef) => {
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
@@ -97,6 +91,7 @@ export default function Gallery() {
           height: "100vh",
           fontFamily: "monospace",
           color: "white",
+          background: "black",
         }}
         ref={inputEl}
       ></div>

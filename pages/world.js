@@ -14,7 +14,6 @@ export default function Home() {
   let bubbles = [];
   let hammer;
   let canvas;
-  let mediaLoaded = 0;
 
   useEffect(() => {
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
@@ -35,22 +34,17 @@ export default function Home() {
     });
 
     return () => {
-      hammer.destroy();
+      if (hammer) {
+        hammer.destroy();
+      }
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
     };
   }, []);
 
   const preload = (p5) => {
-    handleSecondaryMediaLoading(p5);
+    createBubbles(p5, products, bubbles);
   };
 
-  const handleSecondaryMediaLoading = (p5) => {
-    ({bubbles} = createBubbles(p5, products, bubbles, handleMediaLoaded));
-  };
-
-  const handleMediaLoaded = (p5) => {
-    mediaLoaded++;
-  };
   const setup = (p5, canvasParentRef) => {
     canvas = p5
       .createCanvas(window.innerWidth, window.innerHeight)
@@ -97,6 +91,7 @@ export default function Home() {
           height: "100vh",
           fontFamily: "monospace",
           color: "white",
+          background: "black",
         }}
         ref={inputEl}
       ></div>

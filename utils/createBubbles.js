@@ -1,10 +1,10 @@
 import Bubble from "../utils/Bubble";
 
-export const createBubbles = (p5, products, bubbles, handleMediaLoaded) => {
+export const createBubbles = (p5, products, bubbles) => {
   const isMobile = p5.windowWidth < 600;
 
   for (let p of products) {
-    p.src = p5.loadImage(p.src, () => handleMediaLoaded(p5));
+    p.src = p5.loadImage(p.src);
 
     const x = isMobile ? p?.x / 2 : p?.x;
     const y = isMobile ? p?.y / 2 : p?.y;

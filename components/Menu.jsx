@@ -23,11 +23,11 @@ const Divider = styled.div`
 const menuItems = [
   {
     label: "Clothing portal",
-    url: "/LSPortal",
+    url: "/clothing",
   },
   {
     label: "Print portal",
-    url: "/SmallPortal",
+    url: "/prints",
   },
   {
     label: "About",
@@ -44,7 +44,10 @@ export const Menu = ({openMenu}) => {
   return (
     <Divider openMenu={openMenu}>
       {menuItems.map((item) => (
-        <MenuItem key={item.label} onClick={() => router.push(item.url)}>
+        <MenuItem
+          key={item.label}
+          onClick={() => (window.location.href = item.url)}
+        >
           {item.label}
         </MenuItem>
       ))}

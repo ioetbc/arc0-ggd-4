@@ -2,8 +2,8 @@ import {useRouter} from "next/router";
 
 import {ProductDetails} from "../../components/ProductDetails";
 import {Footer} from "../../components/Footer";
-import {clothes} from "../../database/LSPortalDB";
-import {prints} from "../../database/SMPortalDB";
+import {clothes} from "../../database/clothing";
+import {prints} from "../../database/prints";
 
 const Product = () => {
   const router = useRouter();
