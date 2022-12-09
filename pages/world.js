@@ -90,7 +90,7 @@ export default function Home() {
           width: "100%",
           height: "100vh",
           fontFamily: "monospace",
-          color: "white",
+          color: "green",
           background: "black",
         }}
         ref={inputEl}
