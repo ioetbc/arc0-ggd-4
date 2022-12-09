@@ -63,12 +63,6 @@ const Layout = styled.div`
   padding: 16px;
   margin: 0 0 100px 0;
 
-  /* @media (min-width: 540px) {
-    display: grid;
-    gap: 42px;
-    grid-template-columns: 1fr 1fr;
-  } */
-
   @media (min-width: 900px) {
     display: grid;
     gap: 42px;

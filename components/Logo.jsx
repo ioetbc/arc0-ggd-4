@@ -2,6 +2,7 @@ import Image from "next/image";
 import {useState} from "react";
 import {useEffect} from "react";
 import styled from "styled-components";
+import {Menu} from "./Menu";
 
 const Container = styled.div`
   z-index: 200;
@@ -61,8 +62,6 @@ export const Logo = ({openMenu, handleOpenMenu, handleCloseMenu}) => {
     }
   }, []);
 
-  console.log("isMoi", isMobile);
-
   return (
     <Container
       openMenu={openMenu}
@@ -80,15 +79,7 @@ export const Logo = ({openMenu, handleOpenMenu, handleCloseMenu}) => {
           alt="arc-ggd logo"
         />
       </div>
-      {/* {openMenu && ( */}
-      <div className="divider">
-        <div className="item">Product page 1</div>
-        <div className="item">About</div>
-        <div className="item">Terms</div>
-      </div>
-      {/* )} */}
+      <Menu openMenu={openMenu} />
     </Container>
   );
 };
-
-// logo needs to grow not have something appear put of nowhere

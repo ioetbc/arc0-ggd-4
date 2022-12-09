@@ -1,22 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-const Layout = styled.div`
-  position: absolute;
-  right: 16px;
-  transform: ${(props) =>
-    props.openMenu ? "translateY(0)" : "translateY(-500px)"};
-  transition: transform 0.5s;
-  width: 400px;
-  height: 350px;
-  background: #35e9b0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  padding: 16px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-`;
+import {useRouter} from "next/router";
 
 const MenuItem = styled.h3`
   text-transform: uppercase;
@@ -24,20 +8,46 @@ const MenuItem = styled.h3`
 `;
 
 const Divider = styled.div`
-  margin-top: 80px;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: ${(props) => (props.openMenu ? "0.3s" : "0s")};
+  opacity: ${(props) => (props.openMenu ? 1 : 0)};
+  margin-top: 100px;
+  margin-left: 16px;
   border-top: 1px solid black;
   padding-top: 8px;
   width: 70%;
 `;
 
-export const Menu = ({ openMenu, setOpenMenu }) => {
+const menuItems = [
+  {
+    label: "Clothing portal",
+    url: "/LSPortal",
+  },
+  {
+    label: "Print portal",
+    url: "/SmallPortal",
+  },
+  {
+    label: "About",
+    url: "/about",
+  },
+  {
+    label: "Home",
+    url: "/world",
+  },
+];
+
+export const Menu = ({openMenu}) => {
+  const router = useRouter();
   return (
-    <Layout openMenu={openMenu} onMouseLeave={() => setOpenMenu(false)}>
-      <Divider>
-        <MenuItem>Product page 1</MenuItem>
-        <MenuItem>About</MenuItem>
-        <MenuItem>Terms</MenuItem>
-      </Divider>
-    </Layout>
+    <Divider openMenu={openMenu}>
+      {menuItems.map((item) => (
+        <MenuItem key={item.label} onClick={() => router.push(item.url)}>
+          {item.label}
+        </MenuItem>
+      ))}
+    </Divider>
   );
 };
