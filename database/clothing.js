@@ -211,16 +211,11 @@ export const clothes = [
     sku: "WA|23-HB.002-CLS",
     city: "Munich",
     garmentName: "Compliance™ Long-Sleeve",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "image",
-    },
-    price: {
-      eth: 2,
-      gbp: 100,
-      euro: 150,
-    },
+    additionalInfoTitle: "Size guide",
+    additionalInfoDescription: [
+      "some text about size guide",
+      "some text about size guide",
+    ],
   },
   {
     src: "/images/ClothingPortal/SM5.webp",

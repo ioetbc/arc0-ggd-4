@@ -8,12 +8,17 @@ import {Header} from "../components/Header";
 import {MainText} from "../components/MainText";
 
 const Layout = styled.div`
+  height: calc(100vh - 62px);
+  padding: 16px;
+  margin: 0 auto 0 auto;
+  background: green;
+`;
+
+const Something = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1400px;
-  min-height: calc(100vh - 62px);
-  padding: 16px;
-  margin: 100px auto 0 auto;
+  background: yellow;
+  height: 300px;
 `;
 
 const Details = styled.div``;
@@ -73,34 +78,36 @@ const About = () => {
     <>
       <Header />
       <Layout>
-        <EmployeeGrid setSelectedEmployee={setSelectedEmployee} />
-        <Details>
-          {!isNull(selectedEmployee) ? (
-            <>
-              <h1>{employeeContent[selectedEmployee]?.heading}</h1>
-              <p>{employeeContent[selectedEmployee]?.body}</p>
-            </>
-          ) : (
-            <Container>
-              <Pre>
-                <p>
-                  Arc-GGD building Services Provision &amp; Estate Management
-                  Ltd.
-                </p>
-                <p>
-                  Arc-GGD Gesellschaft fur Gebaudedienstleistung und
-                  immobilienverwaltunf GmbH.
-                </p>
-              </Pre>
-              <Heading>Kompetent . preiswert . flexibel</Heading>
-              <Info>
-                <h2>general information</h2>
-                <h2>allgemeine informationen</h2>
-              </Info>
-            </Container>
-          )}
-          <MainText />
-        </Details>
+        <Something>
+          <EmployeeGrid setSelectedEmployee={setSelectedEmployee} />
+          <Details>
+            {!isNull(selectedEmployee) ? (
+              <>
+                <h1>{employeeContent[selectedEmployee]?.heading}</h1>
+                <p>{employeeContent[selectedEmployee]?.body}</p>
+              </>
+            ) : (
+              <Container>
+                <Pre>
+                  <p>
+                    Arc-GGD building Services Provision &amp; Estate Management
+                    Ltd.
+                  </p>
+                  <p>
+                    Arc-GGD Gesellschaft fur Gebaudedienstleistung und
+                    immobilienverwaltunf GmbH.
+                  </p>
+                </Pre>
+                <Heading>Kompetent . preiswert . flexibel</Heading>
+                <Info>
+                  <h2>general information</h2>
+                  <h2>allgemeine informationen</h2>
+                </Info>
+              </Container>
+            )}
+            <MainText />
+          </Details>
+        </Something>
       </Layout>
       <Footer />
     </>

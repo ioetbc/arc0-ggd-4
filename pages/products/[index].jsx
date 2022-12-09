@@ -24,7 +24,8 @@ const Product = () => {
         descriptions={product.descriptions}
         city={product.city}
         stripeLinks={product.stripeLinks}
-        framingInfo={product?.framingInfo}
+        additionalInfoTitle={product?.additionalInfoTitle}
+        additionalInfoDescription={product?.additionalInfoDescription}
       />
       <Footer />
     </>

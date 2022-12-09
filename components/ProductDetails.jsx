@@ -140,7 +140,8 @@ export const ProductDetails = ({
   designer,
   descriptions,
   stripeLinks,
-  framingInfo,
+  additionalInfoTitle,
+  additionalInfoDescription,
 }) => {
   const [price, setPrice] = useState(stripeLinks[0].price);
   const [stripeUrl, setStripeUrl] = useState(stripeLinks[0].url);
@@ -182,7 +183,12 @@ export const ProductDetails = ({
                   {description}
                 </Body>
               ))}
-              {framingInfo && <Accordion framingInfo={framingInfo} />}
+              {additionalInfoTitle && additionalInfoDescription && (
+                <Accordion
+                  title={additionalInfoTitle}
+                  description={additionalInfoDescription}
+                />
+              )}
             </Intro>
           </div>
           <div>

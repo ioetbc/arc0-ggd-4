@@ -166,7 +166,7 @@ export const prints = [
       "/images/PrintPortal/Black-L.webp",
       "/images/PrintPortal/Black-R.webp",
     ],
-    framingInfo: [
+    additionalInfo: [
       "We work with an independent bespoke framer, based in London, UK, to hand-build frames to our precise specification. For the current edition we offer the following framing option:",
       "Natural oak 10mm gallery box frame with dark stain, mounted edge to edge with a 16 mm spacer.",
       "Please note framing will add 3 weeks to the delivery time.",
@@ -194,16 +194,8 @@ export const prints = [
     sku: "BK|23-LE.089-AP-OB",
     city: "Munich",
     garmentName: "Advertising Print Orange/Blue/Grey",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "product",
-    },
-    price: {
-      eth: 2,
-      gbp: 80,
-      euro: 150,
-    },
+    additionalInfoTitle: "Framing info",
+    additionalInfoDescription: ["some text about framing info"],
   },
   ////////////////////////////////////////////////////////////
 
@@ -227,20 +219,24 @@ export const prints = [
       "Two colour hand-sprayed background with hand-screen printed detail.",
       "Edition of 10. Stamped, Signed, Certified.",
     ],
+    stripeLinks: [
+      {
+        label: "UNFRAMED",
+        url: "https://buy.stripe.com/14kcND7ay5TG39m5kk",
+        price: 100,
+      },
+      {
+        label: "FRAMED",
+        url: "https://buy.stripe.com/28o5lb0Ma5TGh0c7st",
+        price: 180,
+      },
+    ],
     designer: "ingeborg harz",
     sku: "BK|23-LE.089-AP-BP",
     city: "Munich",
     garmentName: "Advertising Print Blue/Pink/Green",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "image",
-    },
-    price: {
-      eth: 2,
-      gbp: 80,
-      euro: 150,
-    },
+    additionalInfoTitle: "Framing info",
+    additionalInfoDescription: ["some text about framing info"],
   },
   ////////////////////////////////////////////////////////////
   {
@@ -263,20 +259,24 @@ export const prints = [
       "Two colour hand-sprayed background with hand-screen printed detail.",
       "Edition of 10. Stamped, Signed, Certified.",
     ],
+    stripeLinks: [
+      {
+        label: "UNFRAMED",
+        url: "https://buy.stripe.com/14kcND7ay5TG39m5kk",
+        price: 100,
+      },
+      {
+        label: "FRAMED",
+        url: "https://buy.stripe.com/28o5lb0Ma5TGh0c7st",
+        price: 180,
+      },
+    ],
     designer: "ingeborg harz",
     sku: "BK|23-LE.089-AP-VB",
     city: "Munich",
     garmentName: "Advertising Print Violet/Blue/Pink",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "product",
-    },
-    price: {
-      eth: 2,
-      gbp: 80,
-      euro: 150,
-    },
+    additionalInfoTitle: "Framing info",
+    additionalInfoDescription: ["some text about framing info"],
   },
   ////////////////////////////////////////////////////////////
   {

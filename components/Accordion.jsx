@@ -8,7 +8,7 @@ const SelectStyles = styled.select`
   cursor: pointer;
 `;
 
-export const Accordion = ({framingInfo}) => {
+export const Accordion = ({title, description}) => {
   return (
     <div className="container">
       <div className="faq-drawer">
@@ -18,13 +18,13 @@ export const Accordion = ({framingInfo}) => {
           type="checkbox"
         />
         <label className="faq-drawer__title" htmlFor="faq-drawer">
-          Framing info
+          {title}
         </label>
         <div className="faq-drawer__content-wrapper">
           <div className="faq-drawer__content">
-            {framingInfo.map((info, index) => (
+            {description.map((desc, index) => (
               <p style={{margin: "4px"}} key={index}>
-                {info}
+                {desc}
               </p>
             ))}
           </div>

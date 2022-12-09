@@ -4,11 +4,12 @@ import styled from "styled-components";
 const HIS = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 48px;
-  margin: 2em;
+  padding: 2em;
+  background: red;
+  height: 100%;
 `;
 
-export const MainText = ({ leftText, rightText }) => {
+export const MainText = ({leftText, rightText}) => {
   return (
     <HIS>
       <div>

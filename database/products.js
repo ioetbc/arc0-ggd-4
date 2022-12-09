@@ -394,40 +394,7 @@ export const products = [
     width: 452,
     height: 600,
     type: "product",
-    imageCarousel: [
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-      "/images/product-details/stone-bg.webp",
-    ],
-    stripeLinks: [
-      {
-        small: "https://www.stripe.com/gb",
-        medium: "https://www.stripe.com/gb",
-        large: "https://www.stripe.com/gb",
-        extraLarge: "https://www.stripe.com/gb",
-      },
-    ],
     url: "/clothing",
-    description: "dwdwdwdt.",
-    designer: "gordon Cole",
-    sku: "Another",
-    city: "London",
-    garmentName: "helion tshirt",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "image",
-    },
-    price: {
-      eth: 2,
-      gbp: 500,
-      euro: 150,
-    },
   },
   //////////////////////////////////////////////////////////////////////////////////////////////////////
   {
@@ -439,23 +406,7 @@ export const products = [
     width: 531,
     height: 543,
     type: "product",
-    imageCarousel: [],
     url: "/prints",
-    description: "",
-    designer: "",
-    sku: "",
-    city: "",
-    garmentName: "",
-    garmentDimensions: {
-      width: 1670,
-      height: 2300,
-      type: "image",
-    },
-    price: {
-      eth: 2,
-      gbp: 100,
-      euro: 150,
-    },
   },
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ];
