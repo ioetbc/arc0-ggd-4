@@ -1,6 +1,6 @@
-import { ProductDetails } from "../components/ProductDetails";
-import { Footer } from "../components/Footer";
-import { products } from "../database/products";
+import {ProductDetails} from "../components/ProductDetails";
+import {Footer} from "../components/Footer";
+import {products} from "../database/products";
 
 const BasicTshirt = () => {
   const product = products?.find((p) => "/basic-tshirt" === p.url);
@@ -13,9 +13,7 @@ const BasicTshirt = () => {
         garmentDimensions={product.garmentDimensions}
         sku={product.sku}
         designer={product.designer}
-        description={product.description}
-        description2={product.description2}
-        description3={product.description3}
+        descriptions={product.descriptions}
         price={product.price}
         city={product.city}
       />

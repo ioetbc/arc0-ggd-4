@@ -4,6 +4,7 @@ import {Carousel} from "react-responsive-carousel";
 import {Header} from "./Header";
 import {Button} from "./Button";
 import {useState} from "react";
+import {Accordion} from "./Accordion";
 
 const GarmentName = styled.h1`
   font-size: 48px;
@@ -13,7 +14,7 @@ const GarmentName = styled.h1`
   letter-spacing: 4px;
   margin-bottom: 24px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     width: 500px;
   }
 `;
@@ -68,7 +69,7 @@ const Layout = styled.div`
     grid-template-columns: 1fr 1fr;
   } */
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     display: grid;
     gap: 42px;
     grid-template-columns: 1fr 1fr;
@@ -81,7 +82,7 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-top: 48px;
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     margin-top: 0;
   }
 `;
@@ -143,16 +144,18 @@ export const ProductDetails = ({
   city,
   sku,
   designer,
-  description,
-  description2,
-  description3,
-  price,
+  descriptions,
   stripeLinks,
+  framingInfo,
 }) => {
-  const [stripeLink, setStripeLink] = useState(stripeLinks[0].small);
+  const [price, setPrice] = useState(stripeLinks[0].price);
+  const [stripeUrl, setStripeUrl] = useState(stripeLinks[0].url);
   const handleSizeChange = (event) => {
-    const url = stripeLinks.find((link) => link[event.target.value]);
-    setStripeLink(Object.values(url)[0]);
+    const product = stripeLinks.find(
+      (item) => item.label === event.target.value
+    );
+    setStripeUrl(product.url);
+    setPrice(product.price);
   };
 
   return (
@@ -180,9 +183,12 @@ export const ProductDetails = ({
             <Designer>{designer}</Designer>
 
             <Intro>
-              <Body>{description}</Body>
-              <Body>{description2}</Body>
-              <Body>{description3}</Body>
+              {descriptions.map((description, index) => (
+                <Body styles={{marginBottom: "4px"}} key={index}>
+                  {description}
+                </Body>
+              ))}
+              {framingInfo && <Accordion framingInfo={framingInfo} />}
             </Intro>
           </div>
           <div>
@@ -201,24 +207,21 @@ export const ProductDetails = ({
             <ActionContainer>
               <PaymentContainer>
                 <Feature>price:</Feature>
-                <Feature>£{price.gbp}</Feature>
+                <Feature>£{price}</Feature>
               </PaymentContainer>
               <ButtonContainer>
                 <PurchaseContainer>
                   <Input>
                     <select name="size" id="size" onChange={handleSizeChange}>
-                      {stripeLinks.map((link) => (
-                        <option
-                          key={Object.keys(link)[0]}
-                          value={Object.keys(link)[0]}
-                        >
-                          {Object.keys(link)[0].toUpperCase()}
+                      {stripeLinks.map((product) => (
+                        <option key={product.label} value={product.label}>
+                          {product.label.toUpperCase()}
                         </option>
                       ))}
                     </select>
                   </Input>
                 </PurchaseContainer>
-                <Button onClick={() => window.open(stripeLink)} text="buy" />
+                <Button onClick={() => window.open(stripeUrl)} text="buy" />
               </ButtonContainer>
             </ActionContainer>
           </div>

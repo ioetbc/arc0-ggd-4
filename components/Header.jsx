@@ -37,6 +37,7 @@ export const Header = ({world}) => {
     <>
       <Layout world={world}>
         <Image
+          onClick={() => (!world ? router.push("/world") : null)}
           width={150}
           height={30}
           src={

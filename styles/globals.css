@@ -4,7 +4,6 @@
 
 html,
 body {
-  /* overflow-y: hidden; */
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -20,4 +19,29 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.faq-drawer {
+  margin-bottom: 30px;
+}
+
+.faq-drawer__content-wrapper {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.faq-drawer__title {
+  cursor: pointer;
+  text-decoration: underline;
+  position: relative;
+}
+
+.faq-drawer__trigger:checked
+  + .faq-drawer__title
+  + .faq-drawer__content-wrapper {
+  max-height: 350px;
+}
+
+input[type="checkbox"] {
+  display: none;
 }

@@ -9,7 +9,7 @@ export const prints = [
     height: 964,
     type: "image",
   },
-    {
+  {
     src: "/images/PrintPortal/ROSES.svg",
     grid: 5,
     x: -2662,
@@ -151,7 +151,7 @@ export const prints = [
     height: 1760,
     type: "image",
   },
-    ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
   {
     src: "/images/PrintPortal/PrintOB.webp",
     grid: 5,
@@ -165,14 +165,32 @@ export const prints = [
       "/images/PrintPortal/Black-Front.webp",
       "/images/PrintPortal/Black-L.webp",
       "/images/PrintPortal/Black-R.webp",
-
+    ],
+    framingInfo: [
+      "We work with an independent bespoke framer, based in London, UK, to hand-build frames to our precise specification. For the current edition we offer the following framing option:",
+      "Natural oak 10mm gallery box frame with dark stain, mounted edge to edge with a 16 mm spacer.",
+      "Please note framing will add 3 weeks to the delivery time.",
+    ],
+    stripeLinks: [
+      {
+        label: "UNFRAMED",
+        url: "https://buy.stripe.com/14kcND7ay5TG39m5kk",
+        price: 100,
+      },
+      {
+        label: "FRAMED",
+        url: "https://buy.stripe.com/28o5lb0Ma5TGh0c7st",
+        price: 180,
+      },
     ],
     url: "/products/AdvertisingPrint-OB",
-    description:
-    "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
-    description2: "Two colour hand-sprayed background with hand-screen printed detail.",
-    description3: "Edition of 10. Stamped, Signed, Certified.",
-      designer: "ingeborg harz",
+    descriptions: [
+      "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
+      "Two colour hand-sprayed background with hand-screen printed detail.",
+      "Edition of 10. Stamped, Signed, Certified.",
+      "",
+    ],
+    designer: "ingeborg harz",
     sku: "BK|23-LE.089-AP-OB",
     city: "Munich",
     garmentName: "Advertising Print Orange/Blue/Grey",
@@ -187,7 +205,7 @@ export const prints = [
       euro: 150,
     },
   },
-      ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
   {
     src: "/images/PrintPortal/PrintBP.png",
@@ -202,13 +220,13 @@ export const prints = [
       "/images/PrintPortal/Green-Front.webp",
       "/images/PrintPortal/Green-L.webp",
       "/images/PrintPortal/Green-R.webp",
-
     ],
     url: "/products/AdvertisingPrint-BP",
-    description:
-    "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
-    description2: "Two colour hand-sprayed background with hand-screen printed detail.",
-    description3: "Edition of 10. Stamped, Signed, Certified.",
+    descriptions: [
+      "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
+      "Two colour hand-sprayed background with hand-screen printed detail.",
+      "Edition of 10. Stamped, Signed, Certified.",
+    ],
     designer: "ingeborg harz",
     sku: "BK|23-LE.089-AP-BP",
     city: "Munich",
@@ -224,7 +242,7 @@ export const prints = [
       euro: 150,
     },
   },
-      ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
   {
     src: "/images/PrintPortal/PrintVB.webp",
     grid: 5,
@@ -238,13 +256,13 @@ export const prints = [
       "/images/PrintPortal/Pink-Front.webp",
       "/images/PrintPortal/Pink-L.webp",
       "/images/PrintPortal/Pink-R.webp",
-
     ],
     url: "/products/AdvertisingPrint-VB",
-    description:
-    "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
-    description2: "Two colour hand-sprayed background with hand-screen printed detail.",
-    description3: "Edition of 10. Stamped, Signed, Certified.",
+    descriptions: [
+      "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. In the following collaboration with our Abteilung für Bildende Kunst (Fine Art Department), we bring you a selection of our most Compliant™ motifs.",
+      "Two colour hand-sprayed background with hand-screen printed detail.",
+      "Edition of 10. Stamped, Signed, Certified.",
+    ],
     designer: "ingeborg harz",
     sku: "BK|23-LE.089-AP-VB",
     city: "Munich",
@@ -260,7 +278,7 @@ export const prints = [
       euro: 150,
     },
   },
-      ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
   {
     src: "/images/PrintPortal/Titles2.webp",
     grid: 5,

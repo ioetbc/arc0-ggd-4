@@ -188,19 +188,25 @@ export const clothes = [
     url: "/products/Compliance-Long-Sleeve",
     stripeLinks: [
       {
-        small: "https://buy.stripe.com/14kcND7ay5TG39m5kk",
+        label: "SMALL",
+        url: "https://buy.stripe.com/14kcND7ay5TG39m5kk",
+        price: 50,
       },
       {
-        medium: "https://buy.stripe.com/28o5lb0Ma5TGh0c7st",
+        label: "MEDIUM",
+        url: "https://buy.stripe.com/28o5lb0Ma5TGh0c7st",
+        price: 50,
       },
       {
-        large: "https://buy.stripe.com/28ofZPbqO1Dq7pC28a",
+        label: "LARGE",
+        url: "https://buy.stripe.com/28ofZPbqO1Dq7pC28a",
+        price: 50,
       },
     ],
-    description:
+    descriptions: [
       "At the Arc-GGD Werbeabteilung (Advertising Department) we develop visual strategies to deliver top results to our civil construction clients. Our advertising activities conform to the most stringent quality standards, enshrined in our GGD Process Authorisation Codes, GPAC®.",
-    description2:
       "100% combed ringspun cotton. Heavyweight 205 gsm. Hand screen printed in London, UK.",
+    ],
     designer: "Ingeborg Harz",
     sku: "WA|23-HB.002-CLS",
     city: "Munich",
