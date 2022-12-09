@@ -18,7 +18,9 @@ export default function Home() {
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        inputEl.current.innerHTML += `${entry.name} <br>`;
+        if (inputEl.current) {
+          inputEl.current.innerHTML += `${entry.name} <br>`;
+        }
       }
     });
 
