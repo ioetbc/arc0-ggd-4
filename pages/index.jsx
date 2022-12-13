@@ -50,7 +50,8 @@ const LandingPage = () => {
   const [hideBg, setHideBG] = useState(false);
   const handleDoorOpen = () => {
     setHideBG(true);
-    Router.push("/world");
+    // Router.push("/world");
+    window.open("https://5i6qhgx2zac.typeform.com/to/D2quySsP", "_blank");
   };
 
   useEffect(() => {
