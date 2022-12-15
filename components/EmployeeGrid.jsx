@@ -11,33 +11,45 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const EmployeeGrid = ({setSelectedEmployee}) => {
+export const EmployeeGrid = ({selectedEmployee, setSelectedEmployee}) => {
   return (
     <Grid>
       <div>
         <img
+          style={{cursor: "pointer"}}
           width="100%"
-          src="/images/employees/employee-1.png"
+          src={`/images/about/employees/${
+            selectedEmployee === 0 ? "sigrit-highlight" : "sigrit"
+          }.webp`}
           alt="arc-ggd product"
           onClick={() => setSelectedEmployee(0)}
         />
         <img
+          style={{cursor: "pointer"}}
           width="100%"
-          src="/images/employees/employee-2.png"
+          src={`/images/about/employees/${
+            selectedEmployee === 1 ? "furukan-highlight" : "furukan"
+          }.webp`}
           alt="arc-ggd product"
           onClick={() => setSelectedEmployee(1)}
         />
       </div>
       <div>
         <img
+          style={{cursor: "pointer"}}
           width="100%"
-          src="/images/employees/employee-3.png"
+          src={`/images/about/employees/${
+            selectedEmployee === 2 ? "dagmar-highlight" : "dagmar"
+          }.webp`}
           alt="arc-ggd product"
           onClick={() => setSelectedEmployee(2)}
         />
         <img
+          style={{cursor: "pointer"}}
           width="100%"
-          src="/images/employees/employee-4.png"
+          src={`/images/about/employees/${
+            selectedEmployee === 3 ? "Ingeborg-highlight" : "Ingeborg"
+          }.webp`}
           alt="arc-ggd product"
           onClick={() => setSelectedEmployee(3)}
         />

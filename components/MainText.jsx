@@ -5,28 +5,47 @@ const HIS = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2em;
-  background: red;
   height: 100%;
+`;
+
+const Para = styled.div`
+  margin-bottom: 2rem;
 `;
 
 export const MainText = ({leftText, rightText}) => {
   return (
     <HIS>
       <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error
-          non pariatur sit placeat enim, tempore fugiat debitis necessitatibus,
-          voluptatem, magnam nostrum ad molestias dicta accusamus quidem
-          consequatur doloremque iure!
-        </p>
+        <Para>
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+        </Para>
+        <Para>
+          English English English English English English English English
+          English English English English English English English English
+          English English English English English English English English
+        </Para>
       </div>
       <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-          laboriosam saepe itaque rerum blanditiis veritatis corporis architecto
-          nulla quisquam ex, fuga ipsa! Cum, quaerat laudantium corrupti
-          expedita asperiores mollitia minus?
-        </p>
+        <Para>
+          German German German German German German German German German German
+          German German German German German German German German German German
+          German German German German German German German German German German
+          German German German German German German German German German German
+          German German German German German German German German German German
+          German German German German German German German German German German
+        </Para>
+        <Para>
+          German German German German German German German German German German
+          German German German German German German German German German German
+          German German German German
+        </Para>
       </div>
     </HIS>
   );

@@ -6,19 +6,17 @@ import {EmployeeGrid} from "../components/EmployeeGrid";
 import {Footer} from "../components/Footer";
 import {Header} from "../components/Header";
 import {MainText} from "../components/MainText";
+import Image from "next/image";
 
 const Layout = styled.div`
-  height: calc(100vh - 62px);
+  /* height: calc(100vh - 62px); */
   padding: 16px;
   margin: 0 auto 0 auto;
-  background: green;
 `;
 
 const Something = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: yellow;
-  height: 300px;
 `;
 
 const Details = styled.div``;
@@ -54,6 +52,7 @@ const Container = styled.div`
 const Pre = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 48px;
 
   p {
     font-size: 1.2em;
@@ -63,13 +62,46 @@ const Pre = styled.div`
 const Heading = styled.h1`
   font-size: 2.2em;
   text-transform: uppercase;
-`;
-
-const Info = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 48px;
-  font-size: 1.6em;
+`;
+
+const Info = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.4em;
+
+  h2 {
+    text-transform: uppercase;
+  }
+`;
+
+const EmployeeGridText = styled.p`
+  margin-top: 24px;
+`;
+
+const Outro = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
+const AuthenticityLogos = styled.div`
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const CompanyDetails = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 48px;
+`;
+
+const EmployeeName = styled.h1`
+  font-size: 2.5rem;
+  text-transform: uppercase;
 `;
 
 const About = () => {
@@ -79,35 +111,112 @@ const About = () => {
       <Header />
       <Layout>
         <Something>
-          <EmployeeGrid setSelectedEmployee={setSelectedEmployee} />
+          <div>
+            <EmployeeGrid
+              selectedEmployee={selectedEmployee}
+              setSelectedEmployee={setSelectedEmployee}
+            />
+          </div>
           <Details>
-            {!isNull(selectedEmployee) ? (
-              <>
-                <h1>{employeeContent[selectedEmployee]?.heading}</h1>
-                <p>{employeeContent[selectedEmployee]?.body}</p>
-              </>
-            ) : (
-              <Container>
-                <Pre>
-                  <p>
-                    Arc-GGD building Services Provision &amp; Estate Management
-                    Ltd.
-                  </p>
-                  <p>
-                    Arc-GGD Gesellschaft fur Gebaudedienstleistung und
-                    immobilienverwaltunf GmbH.
-                  </p>
-                </Pre>
-                <Heading>Kompetent . preiswert . flexibel</Heading>
-                <Info>
-                  <h2>general information</h2>
-                  <h2>allgemeine informationen</h2>
-                </Info>
-              </Container>
-            )}
+            <Container>
+              <Pre>
+                <p>
+                  Arc-GGD building Services Provision &amp; Estate Management
+                  Ltd.
+                </p>
+
+                <p>
+                  Arc-GGD Gesellschaft fur Gebaudedienstleistung und
+                  immobilienverwaltunf GmbH.
+                </p>
+              </Pre>
+              {isNull(selectedEmployee) ? (
+                <Heading>
+                  <div>Kompetent</div>
+                  <div>preiswert</div>
+                  <div>flexibel</div>
+                </Heading>
+              ) : (
+                <EmployeeName>
+                  {employeeContent[selectedEmployee]?.heading}
+                </EmployeeName>
+              )}
+              <Info>
+                {isNull(selectedEmployee) ? (
+                  <>
+                    <h2>general information</h2>
+                    <h2>allgemeine informationen</h2>
+                  </>
+                ) : (
+                  <>
+                    <h2>EN</h2>
+                    <h2>DE</h2>
+                  </>
+                )}
+              </Info>
+            </Container>
             <MainText />
           </Details>
         </Something>
+
+        <Outro>
+          <div>
+            <EmployeeGridText>
+              Arc-GGD GmpH is subject to managment and coordination by KiK
+              Textillien und Non-Food GmbH, a subsidiary of Tengelmann
+              Warenhandelsgesellschaft KG. mülheim an der Ruhr, Germany.
+            </EmployeeGridText>
+            <AuthenticityLogos>
+              <Image
+                src="/images/about/certificate-icon.png"
+                alt="GGD certificate"
+                width="236px"
+                height="100px"
+              />
+              <Image
+                src="/images/about/fompa.png"
+                alt="GGD certificate"
+                width="70px"
+                height="92px"
+              />
+              <Image
+                src="/images/about/iso.png"
+                alt="GGD certificate"
+                width="166px"
+                height="72px"
+              />
+              <Image
+                src="/images/about/gold-award.png"
+                alt="GGD certificate"
+                width="80px"
+                height="87px"
+              />
+            </AuthenticityLogos>
+          </div>
+          <CompanyDetails>
+            <div>
+              <EmployeeGridText>
+                Company subject to management and coordination by the Bayerische
+                Verwaltung der staatlichen Schlösser, Gärten und Seen
+                (Verwaltung Englischer Garten) | B.V.s.S.G.S (V.E.G) |
+              </EmployeeGridText>
+              <EmployeeGridText>
+                Italian representation via Ant-Recupero Group Holding S.p.A,
+                pursuant to art. 2497 and the following of the italian civil
+                code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 |
+                P.IVA 082620010963 | county@pec.net |
+              </EmployeeGridText>
+            </div>
+            <div style={{width: "300px"}}>
+              <Image
+                src="/images/about/ggd.png"
+                alt="GGD"
+                width="116px"
+                height="100px"
+              />
+            </div>
+          </CompanyDetails>
+        </Outro>
       </Layout>
       <Footer />
     </>
