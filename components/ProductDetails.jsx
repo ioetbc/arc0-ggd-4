@@ -122,8 +122,7 @@ const Input = styled.div`
   padding-right: 1rem;
 
   select {
-    appearance: none;
-    outline: 0;
+    outline: none;
     border: 0;
     box-shadow: none;
     width: 100%;
