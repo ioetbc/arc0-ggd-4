@@ -110,6 +110,7 @@ const ActionContainer = styled.div`
 `;
 
 const Input = styled.div`
+  appearance: none;
   border: 1px solid black;
   text-transform: uppercase;
   position: relative;
