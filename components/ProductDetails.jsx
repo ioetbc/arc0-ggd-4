@@ -110,7 +110,6 @@ const ActionContainer = styled.div`
 `;
 
 const Input = styled.div`
-  appearance: none;
   border: 1px solid black;
   text-transform: uppercase;
   position: relative;
@@ -123,6 +122,7 @@ const Input = styled.div`
   padding-right: 1rem;
 
   select {
+    appearance: none;
     outline: 0;
     border: 0;
     box-shadow: none;
