@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
-
+// import { useRouter } from "next/router";
 import {onScroll, onSwipe} from "../utils/onScroll";
 import {products} from "../database/products";
 import {handleBubbleClick} from "../utils/handleBubbleClick";
