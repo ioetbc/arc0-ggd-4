@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
-// import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+
 import {onScroll, onSwipe} from "../utils/onScroll";
 import {products} from "../database/products";
 import {handleBubbleClick} from "../utils/handleBubbleClick";
@@ -11,6 +12,7 @@ import {Header} from "../components/Header";
 const Sketch = dynamic(() => import("react-p5"), {ssr: false});
 
 export default function Home() {
+  const router = useRouter();
   let bubbles = [];
   let hammer;
   let canvas;
@@ -51,7 +53,7 @@ export default function Home() {
     }
 
     canvas.mousePressed(() => {
-      handleBubbleClick(p5, bubbles);
+      handleBubbleClick(p5, bubbles, router);
     });
   };
 
