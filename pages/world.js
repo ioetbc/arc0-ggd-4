@@ -49,7 +49,7 @@ export default function Home() {
 
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
     if (inputEl.current) {
-      inputEl.current.remove();
+      inputEl.current.style.display = "none";
     }
 
     canvas.mousePressed(() => {

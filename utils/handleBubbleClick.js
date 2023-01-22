@@ -12,7 +12,7 @@ export const handleBubbleClick = (p5, bubbles, router) => {
     if (bubbleClicked) {
       if (b.url) {
         releaseCanvas();
-        router.replace(b.url).then(() => router.reload());
+        router.push(b.url).then(() => router.reload());
       }
     }
   }

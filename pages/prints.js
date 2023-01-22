@@ -11,7 +11,7 @@ import {Header} from "../components/Header";
 
 const Sketch = dynamic(() => import("react-p5"), {ssr: false});
 
-export default function Gallery() {
+export default function Prints() {
   const router = useRouter();
   let bubbles = [];
   let hammer;
@@ -49,7 +49,7 @@ export default function Gallery() {
 
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
     if (inputEl.current) {
-      inputEl.current.remove();
+      inputEl.current.style.display = "none";
     }
 
     canvas.mousePressed(() => {
