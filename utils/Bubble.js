@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 let vx = 0;
 let vy = 0;
@@ -19,7 +19,8 @@ export default class Bubble {
   }
 
   move() {
-    this.y = this.y + this.p5.random(-1, 1);
+    this.y = this.y + this.p5.random(-3, 3);
+    this.x = this.x + this.p5.random(-3, 3);
   }
 
   isProduct() {
@@ -69,6 +70,15 @@ export default class Bubble {
   }
 
   clicked(mouseX, mouseY) {
+    return (
+      mouseX > this.x &&
+      mouseX < this.x + this.width &&
+      mouseY > this.y &&
+      mouseY < this.y + this.height
+    );
+  }
+
+  hovered(mouseX, mouseY) {
     return (
       mouseX > this.x &&
       mouseX < this.x + this.width &&

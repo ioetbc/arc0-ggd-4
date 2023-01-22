@@ -7,7 +7,7 @@ export const onScroll = (event, bubbles) => {
 
 export const onSwipe = (event, bubbles) => {
   for (let b of bubbles) {
-    b.x += event.velocityX * 10 * b.parallex;
-    b.y += event.velocityY * 10 * b.parallex;
+    b.x += event.velocityX * b.parallex;
+    b.y += event.velocityY * b.parallex;
   }
 };

@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {onScroll, onSwipe} from "../utils/onScroll";
 import {products} from "../database/products";
 import {handleBubbleClick} from "../utils/handleBubbleClick";
+import {handleBubbleHover} from "../utils/handleBubbleHover";
 import {createBubbles} from "../utils/createBubbles";
 import {Header} from "../components/Header";
 
@@ -58,6 +59,10 @@ export default function Home() {
 
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles, router);
+    });
+
+    canvas.mouseMoved(() => {
+      handleBubbleHover(p5.mouseX, p5.mouseY, bubbles, p5);
     });
   };
 

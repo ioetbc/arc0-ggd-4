@@ -10,7 +10,6 @@ export const handleBubbleClick = (p5, bubbles, router) => {
   for (let b of bubbles) {
     const bubbleClicked = b.clicked(p5.mouseX, p5.mouseY);
     if (bubbleClicked) {
-      console.log("bubble hover");
       if (b.url) {
         releaseCanvas();
         router.push(b.url).then(() => router.reload());
