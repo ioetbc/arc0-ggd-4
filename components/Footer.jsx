@@ -9,17 +9,21 @@ const Layout = styled.div`
 `;
 
 const Container = styled.footer`
-  font-size: 18px;
+  font-size: 16px;
   text-transform: uppercase;
 
   ul {
     margin-bottom: 24px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 540px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     font-size: 18px;
   }
   font-family: FreeSansBold;
@@ -119,8 +123,17 @@ export const Footer = () => {
       </Spacer>
       <Spacer>
         <Body>
-        Arc-GGD GmbH is subject to management and coordination by KiK Textilien und Non-Food GmbH, a subsidiary of Tengelmann Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company operations overseen by the Bayerische Verwaltung der staatlichen Schlösser, Gärten und Seen (Verwaltung Englischer Garten) | B.V.s.S,G,S (V.E.G) | Italian representation via Anti-Recupero Group Holding S.p.A, pursuant to art. 2497 and following of the Italian civil code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 | P.IVA 08262010963 | county@pec.net | Share capital declared on the form used to file the the list of shareholders: 12.000,00 Euro.
-                </Body>
+          Arc-GGD GmbH is subject to management and coordination by KiK
+          Textilien und Non-Food GmbH, a subsidiary of Tengelmann
+          Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company
+          operations overseen by the Bayerische Verwaltung der staatlichen
+          Schlösser, Gärten und Seen (Verwaltung Englischer Garten) |
+          B.V.s.S,G,S (V.E.G) | Italian representation via Anti-Recupero Group
+          Holding S.p.A, pursuant to art. 2497 and following of the Italian
+          civil code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 |
+          P.IVA 08262010963 | county@pec.net | Share capital declared on the
+          form used to file the the list of shareholders: 12.000,00 Euro.
+        </Body>
       </Spacer>
     </Layout>
   );

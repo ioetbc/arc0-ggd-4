@@ -26,6 +26,9 @@ export default function Clothing() {
       }
     });
 
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+
     observer.observe({
       entryTypes: ["resource"],
     });
@@ -35,6 +38,7 @@ export default function Clothing() {
         hammer.destroy();
       }
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
+      body.style.overflow = "auto";
     };
   }, []);
 
@@ -54,6 +58,11 @@ export default function Clothing() {
 
     canvas.mousePressed(() => {
       handleBubbleClick(p5, bubbles, router);
+    });
+
+    canvas.mouseMoved(() => {
+      console.log("mouse moved");
+      // handleBubbleClick(p5, bubbles, router);
     });
   };
 

@@ -13,9 +13,10 @@ const GarmentName = styled.h1`
   font-family: FreeSansBold;
   letter-spacing: 4px;
   margin-bottom: 24px;
+  overflow-wrap: break-word;
 
   @media (min-width: 900px) {
-    font-size: 48px;
+    font-size: 40px;
     width: 500px;
   }
 `;
@@ -119,17 +120,20 @@ const Input = styled.div`
   height: 2rem;
   overflow: hidden;
   position: relative;
-  padding-right: 1rem;
+  /* padding-right: 1rem; */
 
   select {
-    background: transparent;
+    /* background: transparent;
     outline: none;
     border: 0;
     box-shadow: none;
     width: 100%;
     text-align: center;
-    background-size: 20px;
+    background-size: 20px; */
+    background: white;
+    width: 100%;
     cursor: pointer;
+    border-radius: 0;
   }
 `;
 

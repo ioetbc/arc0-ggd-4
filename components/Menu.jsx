@@ -6,6 +6,10 @@ const MenuItem = styled.h3`
   text-transform: uppercase;
   font-size: 18px;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Divider = styled.div`
@@ -37,6 +41,10 @@ const menuItems = [
   {
     label: "Home",
     url: "/world",
+  },
+  {
+    label: "Shipping",
+    url: "/shipping",
   },
 ];
 

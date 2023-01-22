@@ -26,6 +26,9 @@ export default function Prints() {
       }
     });
 
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+
     observer.observe({
       entryTypes: ["resource"],
     });
@@ -35,6 +38,7 @@ export default function Prints() {
         hammer.destroy();
       }
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
+      body.style.overflow = "auto";
     };
   }, []);
 

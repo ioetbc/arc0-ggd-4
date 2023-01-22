@@ -26,6 +26,9 @@ export default function Home() {
       }
     });
 
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+
     observer.observe({
       entryTypes: ["resource"],
     });
@@ -35,6 +38,7 @@ export default function Home() {
         hammer.destroy();
       }
       window.removeEventListener("wheel", (event) => onScroll(event, bubbles));
+      body.style.overflow = "auto";
     };
   }, []);
 
@@ -96,7 +100,9 @@ export default function Home() {
         }}
         ref={inputEl}
       ></div>
+      {/* <div style={{overflow: "hidden"}}> */}
       <Sketch setup={setup} draw={draw} preload={preload} />
+      {/* </div> */}
     </>
   );
 }
