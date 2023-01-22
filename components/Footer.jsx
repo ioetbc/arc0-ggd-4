@@ -1,3 +1,5 @@
+import Image from "next/image";
+import {useRouter} from "next/router";
 import React from "react";
 import styled from "styled-components";
 
@@ -6,6 +8,25 @@ const Layout = styled.div`
   background: black;
   color: white;
   padding: 16px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const FooterFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 24px;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
 `;
 
 const Container = styled.footer`
@@ -37,8 +58,11 @@ const Body = styled.p`
 `;
 
 const SubHeading = styled.p`
-  font-size: 16px;
+  max-width: 80%;
+  font-size: 12px;
   text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 const Social = styled.div`
@@ -51,6 +75,7 @@ const Spacer = styled.ul`
 `;
 
 export const Footer = () => {
+  const router = useRouter();
   return (
     <Layout>
       <Container>
@@ -101,39 +126,44 @@ export const Footer = () => {
       </Container>
       <Spacer>
         <Social>
+          <Flex>
+            <Image
+              width={30}
+              height={30}
+              src="/images/misc/instagram.svg"
+              alt="instagram"
+            />
+            <SubHeading>Follow us on instagram</SubHeading>
+          </Flex>
           <div>
-            <SubHeading>ingeborg harz</SubHeading>
-            <li>
-              <Body>instagram</Body>
-            </li>
-            <li>
-              <Body>twitter</Body>
-            </li>
-          </div>
-          <div>
-            <SubHeading>lukas fashinger</SubHeading>
-            <li>
-              <Body>instagram</Body>
-            </li>
-            <li>
-              <Body>twitter</Body>
-            </li>
+            <SubHeading onClick={() => router.push("/shipping")}>
+              Shipping information
+            </SubHeading>
           </div>
         </Social>
       </Spacer>
       <Spacer>
-        <Body>
-          Arc-GGD GmbH is subject to management and coordination by KiK
-          Textilien und Non-Food GmbH, a subsidiary of Tengelmann
-          Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company
-          operations overseen by the Bayerische Verwaltung der staatlichen
-          Schlösser, Gärten und Seen (Verwaltung Englischer Garten) |
-          B.V.s.S,G,S (V.E.G) | Italian representation via Anti-Recupero Group
-          Holding S.p.A, pursuant to art. 2497 and following of the Italian
-          civil code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 |
-          P.IVA 08262010963 | county@pec.net | Share capital declared on the
-          form used to file the the list of shareholders: 12.000,00 Euro.
-        </Body>
+        <FooterFlex>
+          <Body>
+            Arc-GGD GmbH is subject to management and coordination by KiK
+            Textilien und Non-Food GmbH, a subsidiary of Tengelmann
+            Warenhandelsgesellschaft KG, Mülheim an der Ruhr, Germany. Company
+            operations overseen by the Bayerische Verwaltung der staatlichen
+            Schlösser, Gärten und Seen (Verwaltung Englischer Garten) |
+            B.V.s.S,G,S (V.E.G) | Italian representation via Anti-Recupero Group
+            Holding S.p.A, pursuant to art. 2497 and following of the Italian
+            civil code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 |
+            P.IVA 08262010963 | county@pec.net | Share capital declared on the
+            form used to file the the list of shareholders: 12.000,00 Euro.
+          </Body>
+          <Image
+            className="footer-logo"
+            width={100}
+            height={100}
+            src="/images/footer/footer-logo.svg"
+            alt="Arc-GGD trademark"
+          />
+        </FooterFlex>
       </Spacer>
     </Layout>
   );
