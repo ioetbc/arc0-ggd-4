@@ -53,6 +53,10 @@ export default function Home() {
       .parent(canvasParentRef);
 
     window.addEventListener("wheel", (event) => onScroll(event, bubbles));
+    // if (inputEl.current) {
+    //   inputEl.current.style.display = "none";
+    // }
+
     if (inputEl.current) {
       inputEl.current.style.display = "none";
     }
