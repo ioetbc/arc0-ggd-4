@@ -4,7 +4,6 @@ import styled from "styled-components";
 const HIS = styled.div`
   margin-top: 24px;
   height: 100%;
-
   @media (min-width: 900px) {
     display: flex;
     justify-content: space-between;
@@ -14,8 +13,9 @@ const HIS = styled.div`
   }
 `;
 
-const Para = styled.div`
+const Para = styled.p`
   margin-bottom: 2rem;
+  font-family: FreeSans;
 `;
 const German = styled.div`
   display: none;

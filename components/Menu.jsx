@@ -28,6 +28,10 @@ const Divider = styled.div`
 
 const menuItems = [
   {
+    label: "Home",
+    url: "/world",
+  },
+  {
     label: "Clothing portal",
     url: "/clothing",
   },
@@ -39,10 +43,7 @@ const menuItems = [
     label: "About",
     url: "/about",
   },
-  {
-    label: "Home",
-    url: "/world",
-  },
+
   {
     label: "Shipping",
     url: "/shipping",

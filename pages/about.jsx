@@ -1,291 +1,126 @@
-import {useState} from "react";
+import React, {useState, useEffect} from "react";
+import Router from "next/router";
 import styled from "styled-components";
-import isNull from "lodash/isNull";
+import {IconContext} from "react-icons";
+import {BiVolume, BiVolumeMute} from "react-icons/bi";
 
-import {EmployeeGrid} from "../components/EmployeeGrid";
-import {Footer} from "../components/Footer";
+import {Button} from "../components/Button";
 import {Header} from "../components/Header";
-import {MainText} from "../components/MainText";
-import Image from "next/image";
+import {Footer} from "../components/Footer";
+import EmployeeGrid from "../components/EmployeeGrid";
 
 const Layout = styled.div`
-  /* height: calc(100vh - 62px); */
   padding: 16px;
-  margin: 0 auto 0 auto;
-`;
-
-const Something = styled.div`
-  @media (min-width: 900px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
-const Details = styled.div``;
-
-const employeeContent = [
-  {
-    heading: "sigrit baumgartner",
-    body: "this is 0 intro",
-    text: [
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.",
-    ],
-    germanText: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      ,
-    ],
-  },
-  {
-    heading: "dagmar werther",
-    body: "this is 1 intro",
-    text: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-    ],
-    germanText: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      ,
-    ],
-  },
-  {
-    heading: "furukan azimir",
-    body: "this is 2 intro",
-    text: [
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      ,
-    ],
-    germanText: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      ,
-    ],
-  },
-  {
-    heading: "ingeborg harz",
-    body: "this is 3 intro",
-    text: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      ,
-    ],
-    germanText: [
-      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-      ,
-    ],
-  },
-];
-
-const Container = styled.div`
-  background: blue;
-  color: yellow;
-  padding: 1.8em 2.4em;
-  row-gap: 0.6em;
 
   @media (min-width: 900px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-const Pre = styled.div`
-  display: none;
-
-  @media (min-width: 900px) {
-    display: auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 48px;
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 12px;
-    }
+    margin: 0 20% 100px 20%;
   }
 `;
 
 const Heading = styled.h1`
-  display: none;
-  @media (min-width: 900px) {
-    display: flex;
-    font-size: 2.2em;
-    text-transform: uppercase;
-    justify-content: space-between;
-    gap: 48px;
-  }
-`;
-
-const Info = styled.div`
-  display: none;
-
-  @media (min-width: 900px) {
-    font-family: FreeSansBold;
-    transform: scaleY(2.5);
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    /* text-align: center; */
-    text-transform: uppercase;
-    display: grid;
-    gap: 2em;
-    grid-template-columns: 1fr 1fr;
-    font-size: 1.4em;
-    margin-top: 24px;
-  }
-`;
-
-const EmployeeGridText = styled.p`
-  margin-top: 24px;
-`;
-
-const Outro = styled.div`
-  @media (min-width: 900px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
-const AuthenticityLogos = styled.div`
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: center;
-  justify-items: center;
-
-  @media (min-width: 900px) {
-    display: flex;
-    justify-content: space-around;
-  }
-`;
-
-const CompanyDetails = styled.div`
-  @media (min-width: 900px) {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 48px;
-  }
-`;
-
-const EmployeeName = styled.h1`
-  font-family: FreeSansBold;
-  transform: scaleY(2.5);
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  text-align: center;
+  font-size: 32px;
   text-transform: uppercase;
+  line-height: 1;
+  font-family: FreeSansBold;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+
   @media (min-width: 900px) {
-    text-align: left;
-    font-size: 3rem;
-    letter-spacing: 5px;
+    font-size: 48px;
   }
 `;
 
-const About = () => {
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+const SubHeading = styled.h2`
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1;
+  font-family: FreeSansBold;
+  letter-spacing: 4px;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  @media (min-width: 900px) {
+    font-size: 32px;
+  }
+`;
+
+const Body = styled.p`
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: FreeSans;
+`;
+
+const Shipping = () => {
   return (
     <>
       <Header />
       <Layout>
-        <Something>
-          <div>
-            <EmployeeGrid
-              selectedEmployee={selectedEmployee}
-              setSelectedEmployee={setSelectedEmployee}
-            />
-          </div>
-          <Details>
-            <Container>
-              <Pre>
-                <p>
-                  Arc-GGD building Services Provision &amp; Estate Management
-                  Ltd.
-                </p>
-
-                <p>
-                  Arc-GGD Gesellschaft fur Gebaudedienstleistung und
-                  immobilienverwaltunf GmbH.
-                </p>
-              </Pre>
-              {isNull(selectedEmployee) ? (
-                <Heading>
-                  <div>Kompetent</div>
-                  <div>preiswert</div>
-                  <div>flexibel</div>
-                </Heading>
-              ) : (
-                <EmployeeName>
-                  {employeeContent[selectedEmployee]?.heading}
-                </EmployeeName>
-              )}
-              <Info>
-                {isNull(selectedEmployee) ? (
-                  <>
-                    <h2 style={{display: "block"}}>general information</h2>
-                    <h2>allgemeine informationen</h2>
-                  </>
-                ) : (
-                  <>
-                    <h2>EN</h2>
-                    <h2>DE</h2>
-                  </>
-                )}
-              </Info>
-            </Container>
-            <MainText
-              text={employeeContent[selectedEmployee]?.text}
-              germanText={employeeContent[selectedEmployee]?.germanText}
-            />
-          </Details>
-        </Something>
-
-        <Outro>
-          <div>
-            <EmployeeGridText>
-              Arc-GGD GmpH is subject to managment and coordination by KiK
-              Textillien und Non-Food GmbH, a subsidiary of Tengelmann
-              Warenhandelsgesellschaft KG. mülheim an der Ruhr, Germany.
-            </EmployeeGridText>
-            <AuthenticityLogos>
-              <img
-                src="/images/about/certificate-icon.png"
-                alt="GGD certificate"
-              />
-              <img src="/images/about/fompa.png" alt="GGD certificate" />
-              <img src="/images/about/iso.png" alt="GGD certificate" />
-              <img src="/images/about/gold-award.png" alt="GGD certificate" />
-            </AuthenticityLogos>
-          </div>
-          <CompanyDetails>
-            <div>
-              <EmployeeGridText>
-                Company subject to management and coordination by the Bayerische
-                Verwaltung der staatlichen Schlösser, Gärten und Seen
-                (Verwaltung Englischer Garten) | B.V.s.S.G.S (V.E.G) |
-              </EmployeeGridText>
-              <EmployeeGridText>
-                Italian representation via Ant-Recupero Group Holding S.p.A,
-                pursuant to art. 2497 and the following of the italian civil
-                code. VIA FILIPPO TURATI, 12 | 20121 MILANO | REA MI-2013312 |
-                P.IVA 082620010963 | county@pec.net |
-              </EmployeeGridText>
-            </div>
-            <div style={{width: "300px", marginTop: "32px"}}>
-              <Image
-                src="/images/about/ggd.png"
-                alt="GGD"
-                width="116px"
-                height="100px"
-              />
-            </div>
-          </CompanyDetails>
-        </Outro>
+        <EmployeeGrid />
+        <Heading>Shipping info</Heading>
+        <SubHeading>Delivery</SubHeading>
+        <Body>We ship internationally.</Body>
+        <Body>
+          Shipping will be calculated at checkout, price dependant on location
+          and service chosen. We offer free shipping on all orders over £200.
+        </Body>
+        <Body>
+          We do our best to dispatch orders as soon as possible, most orders
+          placed before 1pm will be dispatched the same day. You will receive a
+          dispatch email once your order is on it’s way to you.
+        </Body>
+        <Body>
+          If no one is at the premises to take delivery and the products can’t
+          be posted through your letterbox, you will be left a note informing
+          you of how to rearrange delivery or collect the products from a local
+          depot. If the delivery is not re arranged/ collected from the depot
+          then the item will be sent back to us, if you wish for the item to be
+          sent out again you will be required to cover the cost of additional
+          shipping.
+        </Body>
+        <Body>
+          If the supply of our products is delayed by an event outside our
+          control then we cannot accept responsibility. We will email you as as
+          soon as possible and try to minimise the effect of the delay.
+        </Body>
+        <Body>
+          If you have moved or give us an incorrect address we cannot be held
+          responsible. Please check your order confirmation email and contact us
+          at info@heresy.london immediately if any changes need to be made.
+        </Body>
+        <Body>
+          Please note that orders outside the U.K may be eligible to pay local
+          customs or duty charges; these are not included in your payment to us.
+        </Body>
+        <SubHeading>Returns</SubHeading>
+        <Body>
+          If for any reason you are unsatisfied with an item(s) we offer a 14
+          day returns policy, this applies for both unwanted and faulty items.
+          Before sending an item back please email us and we will send a returns
+          form, include this in the package with the item/ items posted back to
+          us.
+        </Body>
+        <Body>
+          All returned items must be in perfect resalable condition, we will not
+          accept returns for any non faulty items that have been worn/ or tags
+          removed; we reserve the right to refuse a refund. Once items are
+          received in the required condition we will issue a refund. It is the
+          customer’s responsibility to ensure that the return arrives back to
+          us, HERESY will not take responsibility for returned items that are
+          lost in transit. Shipping costs will not be refunded, with the
+          exception of goods confirmed to be faulty. In the case of an exchange,
+          we will cover the cost of the shipping the new item to you.
+        </Body>
+        <Body>
+          The customer is responsible for any customs charges that may be
+          applied to your package. Customs determines these charges, and it is
+          impossible for HERESY to predict what these charges may be. In the
+          case that HERESY is forced to pay customs charges on returned items
+          these charges will be recovered from the value of the customer’s
+          refund.
+        </Body>
       </Layout>
       <Footer />
     </>
   );
 };
 
-export default About;
+export default Shipping;
