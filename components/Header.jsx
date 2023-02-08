@@ -37,7 +37,8 @@ export const Header = ({world}) => {
     <>
       <Layout world={world}>
         <Image
-          onClick={() => (window.location.href = "/world")}
+          // onClick={() => (window.location.href = "/world")}
+          onClick={() => router.push("/world").then(() => router.reload())}
           width={150}
           height={30}
           src={

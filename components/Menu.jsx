@@ -55,7 +55,8 @@ export const Menu = ({openMenu}) => {
       {menuItems.map((item) => (
         <MenuItem
           key={item.label}
-          onClick={() => (window.location.href = item.url)}
+          // onClick={() => (window.location.href = item.url)}
+          onClick={() => router.push(item.url).then(() => router.reload())}
         >
           {item.label}
         </MenuItem>
