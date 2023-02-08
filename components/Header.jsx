@@ -47,7 +47,7 @@ export const Header = ({world}) => {
     <>
       <Layout world={world}>
         <Image
-          onClick={handleLogoClick()}
+          onClick={handleLogoClick}
           width={150}
           height={30}
           src={
