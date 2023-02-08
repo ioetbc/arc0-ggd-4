@@ -33,12 +33,21 @@ export const Header = ({world}) => {
     setOpenMenu(false);
   };
 
+  const handleLogoClick = () => {
+    const canvas = document.querySelector("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d");
+    ctx && ctx.clearRect(0, 0, 1, 1);
+
+    router.push("/world").then(() => router.reload());
+  };
+
   return (
     <>
       <Layout world={world}>
         <Image
-          // onClick={() => (window.location.href = "/world")}
-          onClick={() => router.push("/world").then(() => router.reload())}
+          onClick={handleLogoClick()}
           width={150}
           height={30}
           src={
