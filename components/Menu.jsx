@@ -48,6 +48,16 @@ const menuItems = [
   },
 ];
 
+const handleLogoClick = () => {
+  const canvas = document.querySelector("canvas");
+  canvas.width = 1;
+  canvas.height = 1;
+  const ctx = canvas.getContext("2d");
+  ctx && ctx.clearRect(0, 0, 1, 1);
+
+  router.push(item.url).then(() => router.reload());
+};
+
 export const Menu = ({openMenu}) => {
   const router = useRouter();
   return (
@@ -56,7 +66,7 @@ export const Menu = ({openMenu}) => {
         <MenuItem
           key={item.label}
           // onClick={() => (window.location.href = item.url)}
-          onClick={() => router.push(item.url).then(() => router.reload())}
+          onClick={handleLogoClick}
         >
           {item.label}
         </MenuItem>
