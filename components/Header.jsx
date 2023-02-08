@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import {Logo} from "./Logo";
+import {releaseCanvas} from "../utils/releaseCanvas";
 
 const Layout = styled.div`
   display: flex;
@@ -34,12 +35,7 @@ export const Header = ({world}) => {
   };
 
   const handleLogoClick = () => {
-    const canvas = document.querySelector("canvas");
-    canvas.width = 1;
-    canvas.height = 1;
-    const ctx = canvas.getContext("2d");
-    ctx && ctx.clearRect(0, 0, 1, 1);
-
+    releaseCanvas();
     router.push("/world").then(() => router.reload());
   };
 

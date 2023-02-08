@@ -2,6 +2,7 @@ import Image from "next/image";
 import {useRouter} from "next/router";
 import React from "react";
 import styled from "styled-components";
+import {releaseCanvas} from "../utils/releaseCanvas";
 
 const Layout = styled.div`
   width: 100%;
@@ -76,6 +77,11 @@ const Spacer = styled.ul`
 
 export const Footer = () => {
   const router = useRouter();
+
+  const handleRouteChange = () => {
+    releaseCanvas();
+    router.push("/shipping");
+  };
   return (
     <Layout>
       <Container>
@@ -126,7 +132,11 @@ export const Footer = () => {
       </Container>
       <Spacer>
         <Social>
-          <Flex>
+          <Flex
+            onClick={() =>
+              window.open("https://www.instagram.com/arcggd/", "_blank")
+            }
+          >
             <Image
               width={30}
               height={30}
@@ -136,7 +146,7 @@ export const Footer = () => {
             <SubHeading>Follow us on instagram</SubHeading>
           </Flex>
           <div>
-            <SubHeading onClick={() => router.push("/shipping")}>
+            <SubHeading onClick={handleRouteChange}>
               Shipping information
             </SubHeading>
           </div>

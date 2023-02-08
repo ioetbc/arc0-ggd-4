@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {useRouter} from "next/router";
+import {releaseCanvas} from "../utils/releaseCanvas";
 
 const MenuItem = styled.h3`
   text-transform: uppercase;
@@ -48,18 +49,13 @@ const menuItems = [
   },
 ];
 
-const handleLogoClick = (url) => {
-  const canvas = document.querySelector("canvas");
-  canvas.width = 1;
-  canvas.height = 1;
-  const ctx = canvas.getContext("2d");
-  ctx && ctx.clearRect(0, 0, 1, 1);
-
-  router.push(url).then(() => router.reload());
-};
-
 export const Menu = ({openMenu}) => {
   const router = useRouter();
+
+  const handleLogoClick = (url) => {
+    releaseCanvas();
+    router.push(url).then(() => router.reload());
+  };
   return (
     <Divider openMenu={openMenu}>
       {menuItems.map((item) => (
